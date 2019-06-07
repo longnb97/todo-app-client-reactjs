@@ -6,8 +6,6 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import AppContainer from "./scenes/home/AppContainer";
 
-
-
 ReactDOM.render(
   <BrowserRouter>
       <AppContainer />
