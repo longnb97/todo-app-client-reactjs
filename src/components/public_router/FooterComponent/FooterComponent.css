@@ -1,0 +1,99 @@
+/* header-contact */
+.Footer-contact{
+    background: white;
+    width: 100% !important;
+}
+#Footer{
+    border-top: 2px solid #f3f3f3;
+}
+.Text-left{
+    text-align: left;
+}
+.Container-custom{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    font-size: 12px;
+    border: none;
+}
+.Footer-background-first {
+    transition: top  2s;
+    border-bottom-color: rgb(235, 235, 235);
+    border-bottom: #ada9a9 1px solid;
+    position: relative;
+    overflow: hidden;
+}
+.Style-menu-header{
+    display: none;
+    transition: height  2s;
+}
+
+.Max-width {
+    max-width: 1200px;
+}
+
+.Reset-margin {
+    margin: 0 0;
+}
+
+.Display-none {
+    display: none;
+}
+
+.Center {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.Full-width {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* style footer */
+.Footer-title{
+    margin-top: 20px;
+    line-height: 35px;
+    color: #464646;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+}
+.Footer-content{
+    color: #464646;
+    text-align: justify;
+    font-size: 16px;
+    line-height: 20px;
+}
+.Col-footer > p:not(:first-child){
+    color: #464646;
+    font-size: 16px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f0f0f0;
+    width: 80%;
+}
+.Col-footer > p:first-child{
+    color: #fdfdfd;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 900;
+    background: #dc3333;
+}
+.No-padding {
+    padding: 0 0;
+}
+.Adding-footer{
+    width: 100vw;
+    background: #dc3333;
+    height: 47px;
+    position: absolute;
+}
+.Padding-footer{
+    border-top: 1px solid #dc3333;
+    padding-top: 20px;
+}
+.padding-bottom{
+    height: 50px;
+}

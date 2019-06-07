@@ -1,0 +1,53 @@
+.SignIn-component {
+  text-align: center;
+}
+.Display-none{
+  display: none;
+}
+.Opacity-disable{
+  opacity: 0.6 !important;
+  border-color: #dc3333 !important;
+  background-color: #dc3333 !important;
+}
+.Display-block{
+  display: block;
+}
+.Input-invalid{
+  color: red !important;
+}
+
+.Switch-type-user{
+  display: flex !important;
+  justify-content: space-between  !important;
+}
+
+.Active-bg{
+  color: #fff !important;
+  box-shadow: none;
+  background-color: #dc3333 !important;
+}
+.btn-type-user:hover{
+  color: #fff !important;
+  background-color: #ff4343 !important;
+  border: none;
+}
+.btn-type-user {
+  width: 44% !important;
+  background-color:#FFF;
+  color: #333;
+  font-size: 22px;
+  line-height: 1.2rem;
+  padding: 15px;
+  height: 70px;
+  border-radius: 0px;
+  box-shadow: none;
+  transition: all 0.4s;
+  position: relative;
+  border-color: #dc3333;
+}
+.Switch-type-user{
+  display: flex;
+  height: 70px;
+  margin-bottom: 25px;
+  justify-content: space-between;
+}

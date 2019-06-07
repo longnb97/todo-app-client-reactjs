@@ -1,0 +1,15 @@
+﻿.container-home {
+    padding-bottom: 50px;
+    background: #fdfdfd;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+    max-width: 1200px;
+    box-shadow: 0px 0px 13px #e0dede;
+}
