@@ -58,7 +58,7 @@ class AppContainer extends Component {
   }
 
   componentWillMount() {
-     console.log(store.getState().authenticationInfo);
+    console.log(store.getState().authenticationInfo);
     window.addEventListener("scroll", this._handleScroll);
     // check token dang nhap
     getStorageService("token").then(token => {
@@ -85,32 +85,13 @@ class AppContainer extends Component {
 
   _handleScroll(event) {
     let Header = document.getElementById("Header");
-    let wrapRouter = document.getElementById("Wrap-router");
-    let searchHeader = document.getElementById("Search-header");
-    let headerMenu = document.getElementById("Header-menu");
-    let detailMenu = document.getElementById("Menu-detail") ;  
-
 
     let positionScrollBar = window.scrollY;
     // console.log(positionScrollBar)
     if (positionScrollBar < 45 ) {
-      if( detailMenu !== null){
-        detailMenu.classList.remove("Display-none");
-      }
-      if (positionScrollBar < 25) {
-        wrapRouter.style.marginTop = 0;
         Header.classList.remove("Position-fixed");
-        searchHeader.classList.remove("Style-search-header");
-        headerMenu.classList.remove("Style-menu-header");
-      }
     } else {
-      wrapRouter.style.marginTop = "90px";
       Header.classList.add("Position-fixed");
-      searchHeader.classList.add("Style-search-header");
-      headerMenu.classList.add("Style-menu-header");
-      if( detailMenu !== null){
-        detailMenu.classList.add("Display-none");
-      }
     }
   }
 

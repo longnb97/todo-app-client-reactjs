@@ -52,13 +52,6 @@ class LoginComponent extends Component {
     };
   }
 
-  _selectTypeUser(typeUser) {
-    this.setState({
-      typeuser: typeUser,
-      resMessage: ""
-    });
-  }
-
   _dispatchReduxLogin(authenticationInfo) {
     this.props.dispatchReduxLogin(authenticationInfo);
   }
@@ -230,39 +223,6 @@ class LoginComponent extends Component {
                     <span className="focus-input100" />
                   </div>
 
-                  <div className="p-t-13 p-b-9">
-                    <span className="txt1">Loại tài khoản</span>
-                  </div>
-                  <div className="wrap-input100 Switch-type-user">
-                    <Button
-                      className={
-                        "btn-type-user-login m-b-20 " +
-                        (this.state.typeuser === "customer" ? "Active-bg" : "")
-                      }
-                      onClick={this._selectTypeUser.bind(this, "customer")}
-                    >
-                      Người dùng
-                    </Button>
-                    <Button
-                      className={
-                        "btn-type-user-login m-b-20 " +
-                        (this.state.typeuser === "provider" ? "Active-bg" : "")
-                      }
-                      onClick={this._selectTypeUser.bind(this, "provider")}
-                    >
-                      Người bán
-                    </Button>
-
-                    <Button
-                      className={
-                        "btn-type-user-login m-b-20 " +
-                        (this.state.typeuser === "admin" ? "Active-bg" : "")
-                      }
-                      onClick={this._selectTypeUser.bind(this, "admin")}
-                    >
-                      Admin
-                    </Button>
-                  </div>
 
                   {/* dang ki that bai */}
                   <div className="p-t-13 p-b-9">

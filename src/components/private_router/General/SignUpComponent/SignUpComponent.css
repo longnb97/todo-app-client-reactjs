@@ -1,6 +1,9 @@
 .SignIn-component {
   text-align: center;
 }
+.m-t-27px{
+  margin-top:27px; 
+}
 .Display-none{
   display: none;
 }

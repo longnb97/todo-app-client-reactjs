@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { rootPath } from '../configs/enviroment';
+import http from './interceptors';
 
 export function loginService(dataLogin){
-   return axios.post(`${rootPath}/api/login/`,{
+   return http.post(`${rootPath}api/auth/login`,{
     email : dataLogin.email,
-    password : dataLogin.password,
-    type : dataLogin.type
+    password : dataLogin.password
   })
 } 
 

@@ -1,11 +1,13 @@
-import axios from 'axios';
+import http  from './interceptors';
+import axios  from 'axios';
 import { rootPath } from '../configs/enviroment';
 
 export   function signUpService(dataRegister){
-   return axios.post(`${rootPath}/api/register/`,{
+   return http.post(`${rootPath}api/signup`,{
     username : dataRegister.username,
     password : dataRegister.password,
     email : dataRegister.email ,
-    type : dataRegister.type
+    job: dataRegister.job,
+    company: dataRegister.company
   })
 } 

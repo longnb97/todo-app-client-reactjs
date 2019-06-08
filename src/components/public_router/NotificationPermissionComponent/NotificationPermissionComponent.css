@@ -2,7 +2,6 @@
 .Header-contact{
     background: white;
     width: 100% !important;
-    height: 32px;
 }
 .Container-custom{
     max-width: 1200px;
@@ -16,12 +15,6 @@
 .Notification{
     min-height: 400px;
     min-width: 1200px;
-}
-.Header-background-first {
-    transition: top  2s;
-    border-bottom-color: rgb(235, 235, 235);
-    border-bottom: #ada9a9 1px solid;
-    
 }
 .Container-custom > span{
     float: left;
