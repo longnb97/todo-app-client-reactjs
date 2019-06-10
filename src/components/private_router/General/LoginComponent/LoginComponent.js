@@ -32,7 +32,6 @@ class LoginComponent extends Component {
     this.state = {
       password: "",
       email: "",
-      typeuser: "customer",
 
       passwordInputFocus: false,
       emailInputFocus: false,
@@ -97,11 +96,11 @@ class LoginComponent extends Component {
   _loginWithUserAccount(pass, email, type) {
     let userAccount = new AccoutLoginModel();
     userAccount.password = pass;
-    userAccount.type = type;
     userAccount.email = email;
     this.setState({isLoading: true}, () => {
       loginService(userAccount).then(resLogin => {
         console.log(resLogin);
+        setStorageService("token", resLogin.data.access_token)
         // if (resLogin !== undefined && resLogin.data.result === false) {
         //   this.setState({ resMessage: resLogin.data.message, isLogin: false, role: null, isLoading: false   });
 
