@@ -99,7 +99,7 @@ class AppContainer extends Component {
     return (
       <Provider store={store}>
         {/* <Router basename={'/beego/'} > */}
-        <Router>
+        <Router >
           <div className="App-container">
             <HeaderComponent />
             {/* chú ý private router => nếu pass props thông thường (auth = {isAuthenticated}) => không nhận dc
