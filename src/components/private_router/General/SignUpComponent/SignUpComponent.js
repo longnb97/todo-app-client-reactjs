@@ -34,8 +34,10 @@ class SignUpComponent extends Component {
       emailInputLostFocus: false,
 
       resMessage: "",
-      componentDidMount: false
-    };  }
+      componentDidMount: false,
+      loading: false
+    };
+  }
 
   componentDidMount() {
     // fix err when brower auto save username and password
@@ -49,27 +51,33 @@ class SignUpComponent extends Component {
     userInfo.username = name;
     userInfo.password = pass;
     userInfo.email = email;
-    userInfo.job = job ;
-    userInfo.company = company ;
-    console.log(userInfo);
-    signUpService(userInfo)
-      .then(resRegister => {
-        console.log(resRegister);
-        if (resRegister != undefined && resRegister.data.success == false) {
-          ToastsStore.error(resRegister.data.message);
-          this.setState({ resMessage: resRegister.data.message });
-        } else if (resRegister != undefined && resRegister.data.success == true) {
-          ToastsStore.success("Đăng kí thành công !");
-          this.props.history.push({
-            pathname: "/login",
-            statusRegister: "success"
-          });
-        }
-      })
-      .catch(e => {
-        ToastsStore.error("Có lỗi xảy ra, hãy thử lại !");
-      });
-   }
+    userInfo.job = job;
+    userInfo.company = company;
+    // console.log(userInfo);
+    this.setState({ loading: true }, () => {
+      signUpService(userInfo)
+        .then(resRegister => {
+          console.log(resRegister);
+          if (resRegister != undefined && resRegister.data.success == false) {
+            ToastsStore.error(resRegister.data.message);
+            this.setState({ resMessage: resRegister.data.message });
+          } else if (
+            resRegister != undefined &&
+            resRegister.data.success == true
+          ) {
+            ToastsStore.success("Đăng kí thành công !");
+            this.props.history.push({
+              pathname: "/login",
+              statusRegister: "success"
+            });
+          }
+        })
+        .catch(e => {
+          ToastsStore.error("Có lỗi xảy ra, hãy thử lại !");
+          this.setState({loading : false}); 
+        });
+    });
+  }
 
   render() {
     return (
@@ -268,6 +276,7 @@ class SignUpComponent extends Component {
                       (this.state.username === "" ||
                       this.state.password === "" ||
                       this.state.email === "" ||
+                      this.state.loading === true ||
                       _validateEmail(this.state.email) === false
                         ? "Opacity-disable"
                         : "btn-type-user-form-valid")
@@ -276,12 +285,13 @@ class SignUpComponent extends Component {
                       this.state.username === "" ||
                       this.state.password === "" ||
                       this.state.email === "" ||
+                      this.state.loading === true ||
                       _validateEmail(this.state.email) === false
                         ? true
                         : false
                     }
                   >
-                    Đăng kí
+                    {this.state.loading == true ? "Loading ..." :"Đăng kí"} 
                   </Button>
                   <span className="focus-input100" />
                 </div>

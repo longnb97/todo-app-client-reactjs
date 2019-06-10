@@ -3,10 +3,12 @@ import { rootPath } from '../configs/enviroment';
 import http from './interceptors';
 
 export function loginService(dataLogin){
-   return http.post(`${rootPath}api/auth/login`,{
-    email : dataLogin.email,
-    password : dataLogin.password
-  })
+  //  return http.post(`${rootPath}api/auth/login`,{
+  //   email : dataLogin.email,
+  //   password : dataLogin.password
+  // })
+
+  return http.get('https://happy-dev.herokuapp.com/api/accounts');
 } 
 
 export function ckeckTokenService(accessToken){
