@@ -76,21 +76,21 @@ class LoginComponent extends Component {
       this.setState({ from: { pathname: "/" } });
     }
 
-    if (token !== null && token !== "token invalid") {
-      ckeckTokenService(token).then(statusToken => {
-        console.log(statusToken.data)
-        if (statusToken.data.status === 'live' ) {
-          this._dispatchReduxLogin({ isLogin: true, role: statusToken.data.role});
-          this.setState({ redirectToReferrer: true, isLoading: false }, () => {console.log(this.state.redirectToReferrer)});
-        }
-        else if (statusToken.data.status !== 'live'){
-          this.setState({tokenExprise : true});
-        }
-      });
-    } else {
-      this._dispatchReduxLogin({ isLogin: false, role: null});
-      this.setState({ redirectToReferrer: false });
-    }
+    // if (token !== null && token !== "token invalid") {
+    //   ckeckTokenService(token).then(statusToken => {
+    //     console.log(statusToken.data)
+    //     if (statusToken.data.status === 'live' ) {
+    //       this._dispatchReduxLogin({ isLogin: true, role: statusToken.data.role});
+    //       this.setState({ redirectToReferrer: true, isLoading: false }, () => {console.log(this.state.redirectToReferrer)});
+    //     }
+    //     else if (statusToken.data.status !== 'live'){
+    //       this.setState({tokenExprise : true});
+    //     }
+    //   });
+    // } else {
+    //   this._dispatchReduxLogin({ isLogin: false, role: null});
+    //   this.setState({ redirectToReferrer: false });
+    // }
   }
 
   _loginWithUserAccount(pass, email, type) {
@@ -100,7 +100,7 @@ class LoginComponent extends Component {
     this.setState({isLoading: true}, () => {
       loginService(userAccount).then(resLogin => {
         console.log(resLogin);
-        setStorageService("token", resLogin.data.access_token)
+        setStorageService("token", resLogin.data.data.access_token);
         // if (resLogin !== undefined && resLogin.data.result === false) {
         //   this.setState({ resMessage: resLogin.data.message, isLogin: false, role: null, isLoading: false   });
 
@@ -112,6 +112,8 @@ class LoginComponent extends Component {
         //     this.setState({ redirectToReferrer: true, isLoading: false });
         //   });
         // }
+
+        this.setState({ redirectToReferrer: true, isLoading: false });
       }).catch(
         (errLogin) => {
           console.log(errLogin);

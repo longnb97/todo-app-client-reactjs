@@ -3,10 +3,12 @@ import { rootPath } from '../configs/enviroment';
 import http from './interceptors';
 
 export function loginService(dataLogin){
-   return http.post(`${rootPath}/api/auth/login`,{
+  let accountlogin = {
     email : dataLogin.email,
     password : dataLogin.password
-  })
+  };
+
+   return http.post(`${rootPath}/api/auth/login`,accountlogin);
 } 
 
 export function ckeckTokenService(accessToken){

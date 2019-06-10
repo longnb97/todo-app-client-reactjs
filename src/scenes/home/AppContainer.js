@@ -61,22 +61,22 @@ class AppContainer extends Component {
     console.log(store.getState().authenticationInfo);
     window.addEventListener("scroll", this._handleScroll);
     // check token dang nhap
-    getStorageService("token").then(token => {
-      if (token !== null && token !== "token invalid") {
-        ckeckTokenService(token).then(statusToken => {
-          //console.log(statusToken)
-          if (statusToken.data.status === 'live' ) {
-            store.dispatch(Login({ isLogin: true, role: statusToken.data.role}));
-            this.setState({ isAuthenticated: true });
-          }
-        });
-      } else {
-        store.dispatch(Login({ isLogin: false, role: null}));
-        this.setState({ isAuthenticated: false }, () => {
-          //console.log(this.state.isAuthenticated);
-        });
-      }
-    });
+    // getStorageService("token").then(token => {
+    //   if (token !== null && token !== "token invalid") {
+    //     ckeckTokenService(token).then(statusToken => {
+    //       //console.log(statusToken)
+    //       if (statusToken.data.status === 'live' ) {
+    //         store.dispatch(Login({ isLogin: true, role: statusToken.data.role}));
+    //         this.setState({ isAuthenticated: true });
+    //       }
+    //     });
+    //   } else {
+    //     store.dispatch(Login({ isLogin: false, role: null}));
+    //     this.setState({ isAuthenticated: false }, () => {
+    //       //console.log(this.state.isAuthenticated);
+    //     });
+    //   }
+    // });
   }
 
   componentWillUnmount() {
