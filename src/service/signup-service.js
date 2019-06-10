@@ -3,7 +3,7 @@ import axios  from 'axios';
 import { rootPath } from '../configs/enviroment';
 
 export   function signUpService(dataRegister){
-   return http.post(`${rootPath}api/signup`,{
+   return http.post(`${rootPath}/api/accounts/signup`,{
     username : dataRegister.username,
     password : dataRegister.password,
     email : dataRegister.email ,
