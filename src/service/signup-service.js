@@ -13,5 +13,6 @@ import { rootPath } from '../configs/enviroment';
 // } 
 
 export  function signUpService(dataRegister){
+// fix err
   return http.get(`${rootPath}/api/accounts`);
 } 
