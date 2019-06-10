@@ -95,7 +95,7 @@ class AppContainer extends Component {
     }
   }
 
-  render() {
+  render() { 
     return (
       <Provider store={store}>
         {/* <Router basename={'/beego/'} > */}
