@@ -18,6 +18,7 @@ class TaskComponent extends Component {
       this.setState({noPram: true})
     }
   } 
+  
   render() {
     return (
       <div className="Task-component">
