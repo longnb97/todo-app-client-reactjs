@@ -16,9 +16,9 @@ export function _validatePhone(phone) {
 }
 
 export function _maxLength(number, string) {
-  return  string.length < number && string.length > 0 ? true : false;
+  return  string.length <= number && string.length > 0 ? true : false;
 }
 
 export function _minLength(number, string) {
-  return  string.length > number && string.length > 0 ? true : false;
+  return  string.length >= number && string.length > 0 ? true : false;
 }

@@ -61,31 +61,19 @@ class HeaderComponent extends Component {
             <Row className="Center Header-contact Container-custom">
               <Col
                 xs={12}
-                sm={6}
-                md={4}
-                lg={4}
-                className="No-padding text-center"
-              >
-                <span className="web-name"> </span>
-              </Col>
-              <Col
-                xs={12}
-                sm={6}
-                md={4}
-                lg={4}
-                className="No-padding text-center"
+                sm={12}
+                md={12}
+                lg={12}
+                className="No-padding text-center pos-relative"
               >
                 <Link to="/" className="web-name">
                   {" "}
                   Trello
                 </Link>
-              </Col>
 
-              <Col xs={12} sm={6} md={4} lg={4} className="No-padding">
-                <div className="d-flex flex-row justify-content-end full-height">
                   <div
                     className={
-                      "No-padding Account " +
+                      "No-padding account " +
                       (this.props.listState.authenticationInfo.isLogin === true
                         ? "Display-none"
                         : "align-items-center d-flex flex-row p-10")
@@ -93,10 +81,14 @@ class HeaderComponent extends Component {
                   >
                     <ul className="Account-info">
                       <span>
-                        <Link to="/login">Đăng nhập /</Link>
+                        <Link to="/login" className="Login-text">
+                          Đăng nhập /
+                        </Link>
                       </span>
                       <span>
-                        <Link to="/signup">&nbsp; Đăng ký</Link>
+                        <Link to="/signup" className="SignUp-text">
+                          &nbsp; Đăng ký
+                        </Link>
                       </span>
                     </ul>
                   </div>
@@ -136,7 +128,7 @@ class HeaderComponent extends Component {
                       </p>
                     </div>
                   </div>
-                </div>
+
               </Col>
             </Row>
           </div>

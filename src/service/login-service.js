@@ -20,3 +20,9 @@ export function getInfoUser(){
   return axios.get(`${rootPath}/api/token/info`);
 } 
 
+export function getInfoUserLocal(){
+  var  userDataString =localStorage.getItem("userData");
+  var userDataObject  = JSON.parse(JSON.parse(JSON.stringify(userDataString)) );
+  return userDataObject;
+} 
+

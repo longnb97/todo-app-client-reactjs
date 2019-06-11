@@ -1,13 +1,11 @@
 /* header-contact */
 .Header-contact{
-    background: white;
     width: 100% !important;
 }
 .Container-custom{
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
     margin: 0 auto;
-    background: #fff;
     text-align: center;
     font-size: 12px;
     border: none;

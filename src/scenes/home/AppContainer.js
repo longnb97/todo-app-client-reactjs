@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./AppContainer.css";
-import {
-  createBrowserHistory
-} from 'history'
+import { createBrowserHistory } from "history";
 
 import {
   BrowserRouter as Router,
@@ -11,37 +9,20 @@ import {
   Redirect
 } from "react-router-dom";
 
-import { getStorageService } from "../../service/storeage-service";
-import { ckeckTokenService } from "../../service/login-service";
-
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "../../redux/reducers/rootReduces";
 import { Login } from "../../redux/actions/checkAuthorizeAction";
-import { Button } from "react-bootstrap";
 
 import HeaderComponent from "../../components/public_router/HeaderComponent/HeaderComponent";
 import LoginComponent from "../../components/private_router/General/LoginComponent/LoginComponent";
 import SignUpComponent from "../../components/private_router/General/SignUpComponent/SignUpComponent";
 import NoMatchComponent from "../../components/public_router/NoMatchComponent/NoMatchComponent";
 import HomeComponent from "../../components/public_router/HomeComponent/HomeComponent";
-import ListProductOfUserComponent from "../../components/private_router/Customer/ListProductOfUserComponent/ListProductOfUserComponent";
-import LoadingComponent from "../../components/public_router/LoadingComponent/LoadingComponent";
-import PrivateRoute from "./PrivateRoute";
-// admin
+
 import FooterWithRouter from "../../components/public_router/FooterComponent/FooterComponent";
-import ManageCategoryComponent from "../../components/private_router/Admin/ManageCategoryComponent/ManageCategoryComponent";
-import ManageDiscountComponent from "../../components/private_router/Admin/ManageDiscountComponent/ManageDiscountComponent";
-import ManagePaymentComponent from "../../components/private_router/Admin/ManagePaymentComponent/ManagePaymentComponent";
-import ManageUserComponent from "../../components/private_router/Admin/ManageUserComponent/ManageUserComponent";
 import NotificationPermissionComponent from "../../components/public_router/NotificationPermissionComponent/NotificationPermissionComponent";
-// provider
-import ManageProductComponent from "../../components/private_router/Provider/ManageProduct/ManageProduct";
-
-
-//customer
-
-
+import TaskComponent from "../../components/public_router/TaskComponent/TaskComponent";
 
 // Create store
 const store = createStore(rootReducer);
@@ -88,40 +69,36 @@ class AppContainer extends Component {
 
     let positionScrollBar = window.scrollY;
     // console.log(positionScrollBar)
-    if (positionScrollBar < 45 ) {
-        Header.classList.remove("Position-fixed");
+    if (positionScrollBar < 45) {
+      Header.classList.remove("Position-fixed");
     } else {
       Header.classList.add("Position-fixed");
     }
   }
 
-  render() { 
+  render() {
     return (
       <Provider store={store}>
-        {/* <Router basename={'/beego/'} > */}
-        <Router >
+        <Router>
           <div className="App-container">
             <HeaderComponent />
-            {/* chú ý private router => nếu pass props thông thường (auth = {isAuthenticated}) => không nhận dc
-                https://tylermcginnis.com/react-router-pass-props-to-components/  */}
             <div id="Wrap-router">
               <Switch>
-                <Route history={createBrowserHistory} path="/" exact component={HomeComponent} />
+                <Route
+                  history={createBrowserHistory}
+                  path="/"
+                  exact
+                  component={HomeComponent}
+                />
                 <Route path="/signup" exact component={SignUpComponent} />
-                <Route path="/login" exact component={LoginComponent}/>
-                {/* Provider */}
-                <PrivateRoute  path="/provider/manage/product" exact authed={store.getState().authenticationInfo.isLogin} currentRole={store.getState().authenticationInfo.role} roleRouter = "provider" component={ManageProductComponent} />
-                {/* Customer */}
-                <PrivateRoute path="/customer/list-product-of-user"  exact  authed={store.getState().authenticationInfo.isLogin} currentRole={store.getState().authenticationInfo.role} roleRouter="customer" component={ListProductOfUserComponent} />                  
-               
-                {/* Admin */}
-                <PrivateRoute  path="/admin/manage" exact authed={store.getState().authenticationInfo.isLogin} currentRole={store.getState().authenticationInfo.role} roleRouter = "admin" component={ManageUserComponent} />
-                <PrivateRoute  path="/admin/manage/user-account" exact authed={store.getState().authenticationInfo.isLogin} currentRole={store.getState().authenticationInfo.role} roleRouter = "admin" component={ManageUserComponent} />
-                <PrivateRoute  path="/admin/manage/category" exact authed={store.getState().authenticationInfo.isLogin} currentRole={store.getState().authenticationInfo.role} roleRouter = "admin" component={ManageCategoryComponent} />
-                <PrivateRoute  path="/admin/manage/discount" exact authed={store.getState().authenticationInfo.isLogin} currentRole={store.getState().authenticationInfo.role} roleRouter = "admin" component={ManageDiscountComponent} />
-                <PrivateRoute  path="/admin/manage/payment" exact authed={store.getState().authenticationInfo.isLogin} currentRole={store.getState().authenticationInfo.role} roleRouter = "admin" component={ManagePaymentComponent} />
-               
-                <Route path="/redirect/without-permission" exact component={NotificationPermissionComponent}/>
+                <Route path="/login" exact component={LoginComponent} />
+                <Route path="/task/:id" exact component={TaskComponent} />
+
+                <Route
+                  path="/redirect/without-permission"
+                  exact
+                  component={NotificationPermissionComponent}
+                />
                 <Route component={NoMatchComponent} />
               </Switch>
             </div>

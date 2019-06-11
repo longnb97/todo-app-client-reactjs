@@ -100,23 +100,22 @@ class LoginComponent extends Component {
     this.setState({isLoading: true}, () => {
       loginService(userAccount).then(resLogin => {
         console.log(resLogin);
-        setStorageService("token", resLogin.data.data.access_token);
-        // if (resLogin !== undefined && resLogin.data.result === false) {
-        //   this.setState({ resMessage: resLogin.data.message, isLogin: false, role: null, isLoading: false   });
 
-        // } else if (resLogin.data.result === true) {
-        //   setStorageService("typeUser", userAccount.type);
-        //   setStorageService("token", resLogin.data.token).then(() => {
-        //     this._dispatchReduxLogin({isLogin: true, role : resLogin.data.role});
-        //     ToastsStore.success("Đăng nhập thành công !");
-        //     this.setState({ redirectToReferrer: true, isLoading: false });
-        //   });
-        // }
+        if (resLogin !== undefined && resLogin.data.success === 0) {
+          this.setState({ resMessage: 'Có lỗi xảy ra! Hãy thử lại', isLogin: false, role: null, isLoading: false   });
+        } else if (resLogin !== undefined && resLogin.data.success === 1) {
+          localStorage.setItem('userData', JSON.stringify(resLogin.data.data) );
+          setStorageService("token", resLogin.data.data.access_token).then(() => {
+            this._dispatchReduxLogin({isLogin: true, role : resLogin.data.role});
+            ToastsStore.success("Đăng nhập thành công !");
+            this.setState({ redirectToReferrer: true, isLoading: false });
+          });
+        }
 
-        this.setState({ redirectToReferrer: true, isLoading: false });
       }).catch(
         (errLogin) => {
           console.log(errLogin);
+          this.setState({ redirectToReferrer: false, isLoading: false });
           this._dispatchReduxLogin({ isLogin: false, role: null, isLoading: false  });
           ToastsStore.error("Có lỗi xảy ra, hãy đăng nhập lại !");
         } 

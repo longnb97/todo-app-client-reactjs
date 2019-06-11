@@ -28,10 +28,14 @@ class SignUpComponent extends Component {
       usernameInputFocus: false,
       passwordInputFocus: false,
       emailInputFocus: false,
+      jobInputFocus: false,
+      companyInputFocus: false,
 
       usernameInputLostFocus: false,
       passwordInputLostFocus: false,
       emailInputLostFocus: false,
+      jobInputLostFocus: false,
+      companyInputLostFocus: false,
 
       resMessage: "",
       componentDidMount: false,
@@ -53,17 +57,16 @@ class SignUpComponent extends Component {
     userInfo.email = email;
     userInfo.job = job;
     userInfo.company = company;
-    // console.log(userInfo);
     this.setState({ loading: true }, () => {
       signUpService(userInfo)
         .then(resRegister => {
           console.log(resRegister);
-          if (resRegister != undefined && resRegister.data.success == false) {
+          if (resRegister != undefined && resRegister.data.success === false) {
             ToastsStore.error(resRegister.data.message);
             this.setState({ resMessage: resRegister.data.message });
           } else if (
-            resRegister != undefined &&
-            resRegister.data.success == true
+            resRegister !== undefined &&
+            resRegister.data.success === 1
           ) {
             ToastsStore.success("Đăng kí thành công !");
             this.props.history.push({
@@ -74,7 +77,7 @@ class SignUpComponent extends Component {
         })
         .catch(e => {
           ToastsStore.error("Có lỗi xảy ra, hãy thử lại !");
-          this.setState({loading : false}); 
+          this.setState({ loading: false });
         });
     });
   }
@@ -92,6 +95,45 @@ class SignUpComponent extends Component {
               <form className="login100-form validate-form flex-sb flex-w">
                 <span className="login100-form-title p-b-15">Đăng kí</span>
 
+                {/* username */}
+                <div className="p-t-31 p-b-9">
+                  <span className="txt1">Tên tài khoản</span>
+                </div>
+                <div className="wrap-input100 validate-input">
+                  <input
+                    className="input100 fs-25"
+                    type="text"
+                    name="user_name"
+                    onChange={username => {
+                      this.setState({
+                        username: username.target.value,
+                        resMessage: ""
+                      });
+                    }}
+                    onBlur={() => {
+                      this.setState({ usernameInputLostFocus: true });
+                    }}
+                    onFocus={() => {
+                      this.setState({ usernameInputFocus: true });
+                    }}
+                  />
+                  <div
+                    className={
+                      "Input-invalid " +
+                      (this.state.usernameInputLostFocus === true &&
+                      this.state.usernameInputFocus === true &&
+                      _maxLength(30, this.state.username) === false &&
+                      _minLength(4, this.state.username) === false
+                        ? "Display-block"
+                        : "Display-none")
+                    }
+                  >
+                    Bạn phải nhập Tên tài khoản tối thiểu 4 kí tự và tối đa 30
+                    kí tự
+                  </div>
+                  <span className="focus-input100" />
+                </div>
+
                 {/* email */}
                 <div className="p-t-13 p-b-9">
                   <span className="txt1">Email</span>
@@ -100,7 +142,7 @@ class SignUpComponent extends Component {
                   <input
                     className="input100 fs-25"
                     type="email"
-                    name="email"
+                    name="_email"
                     onChange={email => {
                       this.setState({
                         email: email.target.value,
@@ -158,54 +200,15 @@ class SignUpComponent extends Component {
                   <div
                     className={
                       "Input-invalid " +
-                      (this.state.passwordInputLostFocus === true &&
-                      this.state.passwordInputFocus === true &&
-                      _maxLength(30, this.state.password) === false &&
-                      _minLength(4, this.state.password) === false
+                      ((this.state.passwordInputLostFocus === true &&
+                        this.state.passwordInputFocus === true &&
+                        _maxLength(30, this.state.password) === false) ||
+                      _minLength(6, this.state.password) === false
                         ? "Display-block"
                         : "Display-none")
                     }
                   >
-                    Bạn phải nhập mật khẩu tối thiểu 4 kí tự và tối đa 30 kí tự
-                  </div>
-                  <span className="focus-input100" />
-                </div>
-
-                {/* username */}
-                <div className="p-t-31 p-b-9">
-                  <span className="txt1">Tên tài khoản</span>
-                </div>
-                <div className="wrap-input100 validate-input">
-                  <input
-                    className="input100 fs-25"
-                    type="text"
-                    name="username"
-                    onChange={username => {
-                      this.setState({
-                        username: username.target.value,
-                        resMessage: ""
-                      });
-                    }}
-                    onBlur={() => {
-                      this.setState({ usernameInputLostFocus: true });
-                    }}
-                    onFocus={() => {
-                      this.setState({ usernameInputFocus: true });
-                    }}
-                  />
-                  <div
-                    className={
-                      "Input-invalid " +
-                      (this.state.usernameInputLostFocus === true &&
-                      this.state.usernameInputFocus === true &&
-                      _maxLength(30, this.state.username) === false &&
-                      _minLength(4, this.state.username) === false
-                        ? "Display-block"
-                        : "Display-none")
-                    }
-                  >
-                    Bạn phải nhập Tên tài khoản tối thiểu 4 kí tự và tối đa 30
-                    kí tự
+                    Bạn phải nhập mật khẩu tối thiểu 6 kí tự và tối đa 30 kí tự
                   </div>
                   <span className="focus-input100" />
                 </div>
@@ -225,7 +228,25 @@ class SignUpComponent extends Component {
                         resMessage: ""
                       });
                     }}
+                    onBlur={() => {
+                      this.setState({ jobInputLostFocus: true });
+                    }}
+                    onFocus={() => {
+                      this.setState({ jobInputFocus: true });
+                    }}
                   />
+                  <div
+                    className={
+                      "Input-invalid " +
+                      (this.state.jobInputFocus === true &&
+                      this.state.jobInputLostFocus === true &&
+                      _maxLength(30, this.state.userJob) === false
+                        ? "Display-block"
+                        : "Display-none")
+                    }
+                  >
+                    Bạn không được bỏ trống tên công việc
+                  </div>
                   <span className="focus-input100" />
                 </div>
 
@@ -245,12 +266,24 @@ class SignUpComponent extends Component {
                       });
                     }}
                     onBlur={() => {
-                      this.setState({ usernameInputLostFocus: true });
+                      this.setState({ companyInputLostFocus: true });
                     }}
                     onFocus={() => {
-                      this.setState({ usernameInputFocus: true });
+                      this.setState({ companyInputFocus: true });
                     }}
                   />
+                  <div
+                    className={
+                      "Input-invalid " +
+                      (this.state.companyInputFocus === true &&
+                      this.state.companyInputLostFocus === true &&
+                      _maxLength(30, this.state.userCompany) === false
+                        ? "Display-block"
+                        : "Display-none")
+                    }
+                  >
+                    Bạn không được bỏ trống tên công việc
+                  </div>
                   <span className="focus-input100" />
                 </div>
 
@@ -276,6 +309,8 @@ class SignUpComponent extends Component {
                       (this.state.username === "" ||
                       this.state.password === "" ||
                       this.state.email === "" ||
+                      this.state.userJob === "" ||
+                      this.state.userCompany === "" ||
                       this.state.loading === true ||
                       _validateEmail(this.state.email) === false
                         ? "Opacity-disable"
@@ -285,13 +320,15 @@ class SignUpComponent extends Component {
                       this.state.username === "" ||
                       this.state.password === "" ||
                       this.state.email === "" ||
+                      this.state.userJob === "" ||
+                      this.state.userCompany === "" ||
                       this.state.loading === true ||
                       _validateEmail(this.state.email) === false
                         ? true
                         : false
                     }
                   >
-                    {this.state.loading == true ? "Loading ..." :"Đăng kí"} 
+                    {this.state.loading == true ? "Loading ..." : "Đăng kí"}
                   </Button>
                   <span className="focus-input100" />
                 </div>
