@@ -156,11 +156,12 @@ class TaskComponent extends Component {
             </Col>
           </Row>
 
-          <EditTaskComponent openFormPropEvent={click => this.openFormChildFromParent = click} />
+          <EditTaskComponent taskEdit = {this} openFormPropEvent={click => this.openFormChildFromParent = click} />
         </div>
       </div>
     );
   }
 }
+
 
 export default TaskComponent;
