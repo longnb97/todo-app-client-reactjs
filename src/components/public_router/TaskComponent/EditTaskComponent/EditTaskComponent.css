@@ -14,7 +14,9 @@
     min-height: 400px;
     background: #fff;
     min-width: 500px;
+    display: -webkit-flex;
     display: flex;
+    border-radius: 21px;
 }
 .menu-edit-task{
     width: 250px;
@@ -76,9 +78,13 @@
     width: 100%;
     height: 40px;
     margin-top: 10px;
-    background: #dbdbea;
+    background: #efeff3;
     display: block;
     padding: 0 20px;
+    border-radius: 5px;
+}
+.task-due_date{
+    color: #ef3232;
 }
 .input-edit:focus {
     border-color: #607d8b !important;
@@ -100,4 +106,9 @@
     height: 0 !important;
     transition-property: width height;
     transition-duration: 1s;
+}
+
+.task-description{
+    color: #3d89c5!important;
+    margin: 17px 0;
 }

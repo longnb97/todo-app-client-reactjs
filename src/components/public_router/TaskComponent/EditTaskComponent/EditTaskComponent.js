@@ -85,11 +85,34 @@ class EditTaskComponent extends Component {
             <p className="title-form">{this.state.formTitle}</p>
             <div className="form-detail">
                 <div className= {"" + (this.state.editOption === 1 ? "d-block" : "d-none")} >
-                   <h4>Mô tả: </h4> 
-                  <h5 className="text-success"> {this.state.taskEdit.description} </h5>
+                   <h4>Mô tả: </h4> <hr/>
+                  <h5 className="task-description"> {this.state.taskEdit.description} </h5> <hr/>
                   <input type="text" className="input-edit" />
                   <button className="accept-button">Thay đổi</button>
                 </div>
+
+                <div className= {"" + (this.state.editOption === 2 ? "d-block" : "d-none")} >
+                  <h4>Các thành viên thực hiện</h4><hr/>
+                  <h5 className="task-description"> {this.state.taskEdit.description} </h5> <hr/>
+                  <input type="text" className="input-edit" />
+                  <button className="accept-button">Thay đổi</button>
+                </div>
+
+                <div className= {"" + (this.state.editOption === 3 ? "d-block" : "d-none")} >
+                  <h4>Trạng thái của task:  </h4> <hr/>
+                  <h5 className="task-description"> {this.state.taskEdit.status} </h5> <hr/>
+                  <input type="text" className="input-edit" />
+                  <button className="accept-button">Thay đổi</button>
+                </div>
+
+
+                <div className= {"" + (this.state.editOption === 4 ? "d-block" : "d-none")} >
+                  <h4>Thời gian hết hạn: </h4> <hr/>
+                  <h5 className="task-due_date"> {this.state.taskEdit.due_date} </h5> <hr/>
+                  <input type="text" className="input-edit" />
+                  <button className="accept-button">Thay đổi</button>
+                </div>
+
             </div>
           </div>
         </div>
