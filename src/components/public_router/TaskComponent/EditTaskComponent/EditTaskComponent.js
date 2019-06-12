@@ -3,17 +3,12 @@ import "./EditTaskComponent.css";
 import { Row, Col, Button } from "react-bootstrap";
 import Spinner from "react-spinner-material";
  
-<<<<<<< HEAD
 // task 1 1
-=======
-// task
->>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
 class EditTaskComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       noPram: false,
-<<<<<<< HEAD
       isOpenForm: false,
       taskEdit: {},
       editOption: 0,
@@ -37,24 +32,6 @@ class EditTaskComponent extends Component {
         }
       });
       
-=======
-      listTaskToDo: [],
-      listTaskDoing: [],
-      listTaskDone: [],
-      getDataSuccess: false,
-      isOpenForm: false
-    };
-    this.openForm = this.openForm.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.openFormPropEvent(this.openForm);
-  }
-
-  openForm(){
-      let isOpenForm = this.state.isOpenForm;
-      this.setState({isOpenForm :  !isOpenForm });
->>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
   }
 
   renderLoadingData(getDataSuccess) {
@@ -74,7 +51,6 @@ class EditTaskComponent extends Component {
     );
   }
 
-<<<<<<< HEAD
   selectEditTask(optionIndex) {
     console.log(optionIndex);
     // eslint-disable-next-line default-case
@@ -93,18 +69,12 @@ class EditTaskComponent extends Component {
         break;
     }
   }
-=======
-  selectEditTask(optionIndex){
-    console.log(optionIndex)
-  } 
->>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
 
   render() {
     return (
       <div className= { this.state.isOpenForm === true ? "edit-task-component" : "d-none-width-height" }  >
         <div className="edit-task">
           <div className="menu-edit-task">
-<<<<<<< HEAD
             <button className= {"menu-item " + (this.state.editOption === 1 ? "menu-item-active" : "")} onClick={this.selectEditTask.bind(this, 1)}> Chỉnh sửa nhãn </button>
             <button className= {"menu-item " + (this.state.editOption === 2 ? "menu-item-active" : "")}  onClick={this.selectEditTask.bind(this, 2)}> Thay đổi thành viên</button>
             <button className= {"menu-item " + (this.state.editOption === 3 ? "menu-item-active" : "")} onClick={this.selectEditTask.bind(this, 3)}> Di chuyển </button>
@@ -143,20 +113,6 @@ class EditTaskComponent extends Component {
                   <button className="accept-button">Thay đổi</button>
                 </div>
 
-=======
-            <button className="menu-item" onClick={this.selectEditTask.bind(this, 1)}> Chỉnh sửa nhãn </button>
-            <button className="menu-item" onClick={this.selectEditTask.bind(this, 2)}> Thay đổi thành viên</button>
-            <button className="menu-item" onClick={this.selectEditTask.bind(this, 3)}> Di chuyển </button>
-            <button className="menu-item" onClick={this.selectEditTask.bind(this, 4)}> Thay đổi ngày hết hạn</button>
-            <button className="menu-item" onClick={this.openForm.bind(this)}> Thoát</button>
-          </div>
-          <div className="form-edit-task">
-            <p className="title-form">Chỉnh sửa nhãn</p>
-            <div className="form-detail">
-                <p></p>
-              <input type="text" className="input-edit" />
-              <button className="accept-button">Thay đổi</button>
->>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
             </div>
           </div>
         </div>

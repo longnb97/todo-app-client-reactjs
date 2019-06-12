@@ -12,13 +12,10 @@
   position: fixed;
   z-index: 200;
   width: 100vw;
-<<<<<<< HEAD
 }
 .d-none{
   display: none;
 }
 .d-block{
   display: block;
-=======
->>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
 }
