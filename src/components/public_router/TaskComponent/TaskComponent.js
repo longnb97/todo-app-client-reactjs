@@ -4,7 +4,7 @@ import { Row, Col, Button } from "react-bootstrap";
 import { getAllTaskByProjectId } from "../../../service/task-service";
 import Spinner from "react-spinner-material";
 import EditTaskComponent from "./EditTaskComponent/EditTaskComponent";
-
+import AddTaskComponent from "./AddTaskComponent/AddTaskComponent";
 class TaskComponent extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +18,8 @@ class TaskComponent extends Component {
       classFormEdit: "d-none-width-height",
       taskEdit: {}
     };
-    this.openFormChildFromParent = this.openFormChildFromParent.bind(this);
+    this.openFormEditTaskFromParent = this.openFormEditTaskFromParent.bind(this);
+    this.openFormAddTaskFromParent = this.openFormAddTaskFromParent.bind(this);
   }
 
   componentDidMount() {
@@ -58,7 +59,8 @@ class TaskComponent extends Component {
     });
   }
 
-  openFormChildFromParent(){}
+  openFormEditTaskFromParent(){};
+  openFormAddTaskFromParent(){}
 
   passTaskItemToEditTaskComponent(task){
     this.setState({taskEdit : task})
@@ -69,7 +71,7 @@ class TaskComponent extends Component {
       <div className="task-cover" key={index}>
         <div>
           <p className="task-name"  
-              onClick={() => { this.openFormChildFromParent(); this.passTaskItemToEditTaskComponent(task);}}>
+              onClick={() => { this.openFormEditTaskFromParent(); this.passTaskItemToEditTaskComponent(task);}}>
               {task.description} 
               <img src= {require("../../../assets/image/icon/edit.png")}  
               className= "edit-task-img" />
@@ -152,8 +154,10 @@ class TaskComponent extends Component {
             </Col>
           </Row>
 
-          <EditTaskComponent taskEdit = {this.state.taskEdit} openFormPropEvent={click => this.openFormChildFromParent = click} />
+          <EditTaskComponent taskEdit = {this.state.taskEdit} openFormPropEvent={click => this.openFormEditTaskFromParent = click} />
+          <AddTaskComponent openFormPropEvent={click => this.openFormAddTaskFromParent = click} />
         </div>
+        
       </div>
     );
   }
