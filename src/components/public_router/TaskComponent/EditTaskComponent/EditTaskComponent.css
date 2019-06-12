@@ -43,6 +43,18 @@
     transition-duration: 0.5s;
 }
 
+#exit-button:hover{
+    width: 220px;
+    background: #ef3232;
+    color: #fff !important;
+}
+
+.menu-item-active{
+    width: 220px;
+    background: #333;
+    color: #fff;    
+}
+
 .menu-item:hover{
     width: 220px;
     background: #333;

@@ -51,7 +51,7 @@ class TaskComponent extends Component {
             getDataSuccess : true
           },
           () => {
-            console.log(this.state.listTaskDoing, this.state.listTaskToDo);
+            // console.log(this.state.listTaskDoing, this.state.listTaskToDo);
           }
         );
       }
@@ -61,7 +61,7 @@ class TaskComponent extends Component {
   openFormChildFromParent(){}
 
   passTaskItemToEditTaskComponent(task){
-    this.setState({taskEdit : task}, () => console.log(this.state.taskEdit))
+    this.setState({taskEdit : task})
   }
 
   renderListTaskDetail(tasks) {
@@ -156,7 +156,7 @@ class TaskComponent extends Component {
             </Col>
           </Row>
 
-          <EditTaskComponent taskEdit = {this} openFormPropEvent={click => this.openFormChildFromParent = click} />
+          <EditTaskComponent taskEdit = {this.state.taskEdit} openFormPropEvent={click => this.openFormChildFromParent = click} />
         </div>
       </div>
     );

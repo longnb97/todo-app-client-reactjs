@@ -13,3 +13,9 @@
   z-index: 200;
   width: 100vw;
 }
+.d-none{
+  display: none;
+}
+.d-block{
+  display: block;
+}
