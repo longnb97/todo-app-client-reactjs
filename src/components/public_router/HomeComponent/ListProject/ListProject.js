@@ -17,7 +17,6 @@ export class ListProject extends React.Component {
   }
   componentDidMount() {
     getAllProjectService().then(projects => {
-      console.log(projects.data.data);
       this.setState({
         listProject: projects.data.data,
         getlistProjectSuccess: true
@@ -40,7 +39,7 @@ export class ListProject extends React.Component {
         sm={12}
         md={3}
         lg={3}
-        className="No-padding text-center col-custom"
+        className="No-padding text-center col-project-custom"
         key={index}
       >
         <Link
@@ -58,7 +57,7 @@ export class ListProject extends React.Component {
             <div className="flex-1">
               <p className="project-name">
                 {" "}
-                {this._sliceText(project.name, 14)}
+                {this._sliceText(project.name, 12)}
               </p>
               <div className="users">
                 <img

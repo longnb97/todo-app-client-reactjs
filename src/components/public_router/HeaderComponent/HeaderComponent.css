@@ -141,9 +141,8 @@
 
 .dropbtn {
     background-color: #fdfdfd;
-    color: #E91E63;
+    color: #2196F3;
     font-size: 20px;
-    border: 1px solid #210b0b;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -152,8 +151,8 @@
     font-weight: 900;
     font-family: 'Roboto', sans-serif;
     margin-top: 7px;
-    border: 4px solid #dc3333;
-    box-shadow: 0 0 0 2pt #fdfdfd;
+    border: 3px solid #2196F3;
+    box-shadow: 0 0 0 3px #fdfdfd;
 }
 
 .dropdown {
