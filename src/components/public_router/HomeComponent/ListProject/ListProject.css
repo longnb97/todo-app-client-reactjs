@@ -31,7 +31,11 @@
 }
 
 .project-item:hover {
+<<<<<<< HEAD
     box-shadow: 0 0 5px #1661d0;
+=======
+    box-shadow: 0 0 12px #1661d0;
+>>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
     text-decoration: none;
     color: #cfdcf0;
     border-color: transparent !important;

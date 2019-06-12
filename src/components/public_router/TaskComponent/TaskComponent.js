@@ -16,9 +16,13 @@ class TaskComponent extends Component {
       getDataSuccess: false,
       openFormEditTask: false,
       classFormEdit: "d-none-width-height",
+<<<<<<< HEAD
       taskEdit: {}
     };
     this.openFormChildFromParent = this.openFormChildFromParent.bind(this);
+=======
+    };
+>>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
   }
 
   componentDidMount() {
@@ -51,17 +55,26 @@ class TaskComponent extends Component {
             getDataSuccess : true
           },
           () => {
+<<<<<<< HEAD
             // console.log(this.state.listTaskDoing, this.state.listTaskToDo);
+=======
+            console.log(this.state.listTaskDoing, this.state.listTaskToDo);
+>>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
           }
         );
       }
     });
   }
 
+<<<<<<< HEAD
   openFormChildFromParent(){}
 
   passTaskItemToEditTaskComponent(task){
     this.setState({taskEdit : task})
+=======
+  openEditForm(){
+
+>>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
   }
 
   renderListTaskDetail(tasks) {
@@ -69,7 +82,11 @@ class TaskComponent extends Component {
       <div className="task-cover" key={index}>
         <div>
           <p className="task-name"  
+<<<<<<< HEAD
               onClick={() => { this.openFormChildFromParent(); this.passTaskItemToEditTaskComponent(task);}}>
+=======
+              onClick={() => this.openForm()}>
+>>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
               {task.description} 
               <img src= {require("../../../assets/image/icon/edit.png")}  
               className= "edit-task-img" />
@@ -156,14 +173,22 @@ class TaskComponent extends Component {
             </Col>
           </Row>
 
+<<<<<<< HEAD
           <EditTaskComponent taskEdit = {this.state.taskEdit} openFormPropEvent={click => this.openFormChildFromParent = click} />
+=======
+          <EditTaskComponent openFormPropEvent={click => this.openForm = click} />
+>>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
         </div>
       </div>
     );
   }
 }
 
+<<<<<<< HEAD
 
 
 export default TaskComponent;
 
+=======
+export default TaskComponent;
+>>>>>>> d5a53163d61d0a94e376fee27c6fc2b3d27fb609
