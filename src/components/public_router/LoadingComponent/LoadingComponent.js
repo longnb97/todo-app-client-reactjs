@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from "./node_modules/react";
 import "./LoadingComponent.css";
-import LoadingOverlay from "react-loading-overlay";
-import RingLoader from "react-spinners/RingLoader";
-import ClipLoader from 'react-spinners/ClipLoader';
-import { css } from '@emotion/core';
+import LoadingOverlay from "./node_modules/react-loading-overlay";
+import RingLoader from "./node_modules/react-spinners/RingLoader";
+import ClipLoader from './node_modules/react-spinners/ClipLoader';
+import { css } from './node_modules/@emotion/core';
  
 // https://www.react-spinners.com/
 const override = css`

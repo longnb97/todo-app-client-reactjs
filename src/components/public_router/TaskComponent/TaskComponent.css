@@ -19,13 +19,16 @@
 }
 .all-task{
     border-top: 8px solid #ecedf1;
-    border-top-style: groove;
+    border-top-style: double;
     border-bottom: 8px solid #d5d6d8;
     border-bottom-style: groove;
     width: 95%;
     margin: 20px auto;
 }
 
+.add-task:hover{
+    box-shadow: 0 0 5px #2b5fad;
+}
 .display-block{
     display: block;
 }
@@ -77,6 +80,7 @@
     color: #2b5fad;
     font-weight: 600;
     position: relative;
+    cursor: pointer;
 }
 .edit-task-img{
     position: absolute;

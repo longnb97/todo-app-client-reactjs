@@ -66,10 +66,8 @@ class AppContainer extends Component {
 
   _handleScroll(event) {
     let Header = document.getElementById("Header");
-
     let positionScrollBar = window.scrollY;
-    // console.log(positionScrollBar)
-    if (positionScrollBar < 45) {
+    if (positionScrollBar < 65) {
       Header.classList.remove("Position-fixed");
     } else {
       Header.classList.add("Position-fixed");
@@ -102,7 +100,7 @@ class AppContainer extends Component {
                 <Route component={NoMatchComponent} />
               </Switch>
             </div>
-            <FooterWithRouter />
+            {/* <FooterWithRouter /> */}
           </div>
         </Router>
       </Provider>

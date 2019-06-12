@@ -81,24 +81,23 @@ class TaskComponent extends Component {
     return listRender;
   }
 
-  renderLoadingData(getDataSuccess) {
+  renderLoadingData(getDataSuccess, size, text) {
     return (
       <div
-        className={ getDataSuccess === false ? "spinnerClass" : "d-none"}
+        className={getDataSuccess === false ? "spinnerClass" : "d-none"}
       >
         <Spinner
-          size={30}
+          size={size}
           spinnerColor={"#0052cc"}
           spinnerWidth={2}
           visible={true}
           className="spinerCustom"
         />
-        <p className="text-center text-loading">
-          Đang tải xuống  ...
-        </p>
+        <p className="text-center text-loading">{text}</p>
       </div>
     );
   }
+
 
   render() {
     return (
@@ -117,42 +116,39 @@ class TaskComponent extends Component {
           </p>
 
           <Row className="all-task">
-            <Col
-              xs={12}
-              sm={12}
-              md={4}
-              lg={4}
-              className="No-padding text-center col-custom"
-            >
+            <Col xs={12}  sm={12}   md={4}  lg={4}  className="No-padding text-center col-custom" >
               <p className="col-name">Trong tiến trình</p>
               <hr />
-              {this.renderLoadingData(this.state.getDataSuccess)}
+              {this.renderLoadingData(this.state.getDataSuccess, 30, "Đang tải xuống ...")}
               {this.renderListTaskDetail(this.state.listTaskToDo)}
+              <div className= {this.state.getDataSuccess === true ? "add-task task-cover" : "d-none"} >
+                <p className="task-name text-center" >
+                  <span>+</span> Thêm thẻ khác
+                </p>
+              </div>
             </Col>
-            <Col
-              xs={12}
-              sm={12}
-              md={4}
-              lg={4}
-              className="No-padding text-center col-custom"
-            >
+            <Col xs={12}  sm={12}   md={4}  lg={4}  className="No-padding text-center col-custom" >
               <p className="col-name">Đang thực hiện</p>
               <hr />
-              {this.renderLoadingData(this.state.getDataSuccess)}
+              {this.renderLoadingData(this.state.getDataSuccess, 30, "Đang tải xuống ...")}
               {this.renderListTaskDetail(this.state.listTaskDoing)}
+              <div className= {this.state.getDataSuccess === true ? "add-task task-cover" : "d-none"} >
+                <p className="task-name text-center" >
+                    <span>+ &nbsp;</span> Thêm thẻ khác
+                </p>
+              </div>
             </Col>
 
-            <Col
-              xs={12}
-              sm={12}
-              md={4}
-              lg={4}
-              className="No-padding text-center col-custom"
-            >
+            <Col xs={12}  sm={12}   md={4}  lg={4}  className="No-padding text-center col-custom" >
               <p className="col-name">Đã hoàn thành</p>
               <hr />
-              {this.renderLoadingData(this.state.getDataSuccess)}
+              {this.renderLoadingData(this.state.getDataSuccess, 30, "Đang tải xuống ...")}
               {this.renderListTaskDetail(this.state.listTaskDone)}
+              <div className= {this.state.getDataSuccess === true ? "add-task task-cover" : "d-none"} >
+                <p className="task-name text-center" >
+                  <span>+</span> Thêm thẻ khác
+                </p>
+              </div>
             </Col>
           </Row>
 

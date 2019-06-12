@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import "./EditTaskComponent.css";
+import "./AddTaskComponent.css";
 import { Row, Col, Button } from "react-bootstrap";
 import Spinner from "react-spinner-material";
 import {RadioGroup, Radio} from 'react-radio-group';
-// task 1 1
-class EditTaskComponent extends Component {
+
+class AddTaskComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       noPram: false,
-      isOpenFormEdit: false,
+      isOpenFormAdd: false,
       taskEdit: {
         status: "doing.gif"
       },
@@ -26,9 +26,9 @@ class EditTaskComponent extends Component {
   }
 
   _openForm(){
-      let isOpenFormEdit = this.state.isOpenFormEdit;
-      this.setState({isOpenFormEdit :  !isOpenFormEdit }, () =>{
-        if (this.state.isOpenFormEdit === true){
+      let isOpenFormAdd = this.state.isOpenFormAdd;
+      this.setState({isOpenFormAdd :  !isOpenFormAdd }, () =>{
+        if (this.state.isOpenFormAdd === true){
           let task = this.props.taskEdit;
           this.setState({taskEdit : task, editOption : 1, formTitle: "Chỉnh sửa nhãn"}, () => console.log(this.props.taskEdit))
         }
@@ -80,7 +80,7 @@ class EditTaskComponent extends Component {
 
   render() {
     return (
-      <div className= { this.state.isOpenFormEdit === true ? "edit-task-component" : "d-none-width-height" }  >
+      <div className= { this.state.isOpenFormAdd === true ? "edit-task-component" : "d-none-width-height" }  >
         <div className="edit-task">
           <div className="menu-edit-task">
             <button className= {"menu-item " + (this.state.editOption === 1 ? "menu-item-active" : "")} onClick={this.selectEditTask.bind(this, 1)}> Chỉnh sửa nhãn </button>
@@ -154,4 +154,4 @@ class EditTaskComponent extends Component {
   }
 }
 
-export default EditTaskComponent;
+export default AddTaskComponent;
