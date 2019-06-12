@@ -31,7 +31,7 @@
 }
 
 .project-item:hover {
-    box-shadow: 0 0 12px #1661d0;
+    box-shadow: 0 0 5px #1661d0;
     text-decoration: none;
     color: #cfdcf0;
     border-color: transparent !important;
