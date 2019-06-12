@@ -1,0 +1,67 @@
+Giải thích về redux https://redux.js.org/basics/example
+https://learn.co/lessons/map-dispatch-to-props-readme
+1. Quy trình làm việc cơ bản cua redux
+ => Action: khai báo 1 action => chỉ làm nhiệm vụ khai báo
+ => Reducer: 
+    + định nghĩa hành động cụ thể cho Action ở trên
+    + Gom tất cả các reducer đã tạo => tạo thành rootReducer => và import vào trong AppContainer 
+2. Chi tiết
+
+2.1: Khai báo 1 Action
+    export function Login(isLogin) {
+        return { type: 'LOGIN', isLogin }
+    }
+
+    => action là 1 function chứa 2 tham số 
+        + type: để định danh cho action , sau đó, định danh này sẽ được reducer dùng để định nghĩa chi tiêt
+        + isLogin: tên 1 tham số tùy chọn, có thể tùy đổi( tham số có hay không cũng được)
+        
+
+2.2: Khai báo Reducer   
+    const checkAuthorizeReducer = (stateIsLogin = false , action) => {
+        switch (action.type) {
+        case 'LOGOUT':
+            return action.isLogOut;
+        case 'LOGIN':
+            return action.isLogin;
+        default:
+            return stateIsLogin;
+        
+        }
+    };
+    export default checkAuthorizeReducer;
+
+    => Reducer sẽ dựa và tên định danh của action => gom các action cùng tương tác đến 1 state
+    => Nói đúng hơn có nhiều function để tương tác, thay đổi 1 state => Reducer sẽ chịu trách nhiệm quản lý các Action sẽ là gì , trả về cái gì
+    => Như nói ở trên, reducer sẽ phải trả về state do các action thay đổi, và nếu k có thay đổi thì sẽ lấy stateDefault (stateIsLogin)
+
+2.3: Kết nối redux vào từng component
+
+    => ĐẶT CÂU HỎI? VẬY THÌ CÁI BIẾN MÌNH SẼ TRUYỀN VÀO TỪNG COMPONENT NÓ SẼ NHƯ THẾ NÀO?
+    => Tìm câu trả lời bên trong header.js( nhớ là phải kết nối component với redux => tự xem chi tiết)
+
+    const mapStateToProps = (state, ownProps) => {
+        return {
+            listState: state
+        }
+    }
+
+    function mapDispatchToProps(dispatch) {
+        return {
+            changeAddress: (address) => dispatch(changeAddress(address)),
+            checkAddress: () => dispatch(checkAddress()),
+        }
+    }
+
+    export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
+    
+    => trên là function để truyền tham số vào bên trong component 
+        + listState là props mà function nhận được, nó chứa tất cả các dữ liệu của store được truyền thông qua biến state
+        + listState chứa các giá trị, và các giá trị đó có dạng có dạng
+            kiểu/tên : dữ liệu
+            => xem trong file rootReducer => khi chúng ta combineReducers => chúng ta đã đặt tên cho từng cái state(vừa nói ở trên)
+            => Mỗi reducer(có nhiều action) => sẽ trả về 1 giá trị => gán giá trị này cho 1 cái tên như trong ( file rootReducer)
+
+
+2.4. sai lầm https://medium.com/dailyjs/11-mistakes-ive-made-during-react-native-redux-app-development-8544e2be9a9
+https://insights.innovatube.com/redux-th%E1%BA%ADt-l%C3%A0-%C4%91%C6%A1n-gi%E1%BA%A3n-ph%E1%BA%A7n-cu%E1%BB%91i-4155b1cfed03

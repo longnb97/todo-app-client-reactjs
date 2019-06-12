@@ -1,0 +1,55 @@
+/* header-contact */
+.Header-contact{
+    width: 100% !important;
+}
+.Container-custom{
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+    border: none;
+}
+.Notification{
+    min-height: 400px;
+    min-width: 1200px;
+}
+.Container-custom > span{
+    float: left;
+    font-size: 12px;
+    line-height: 32px;
+    height: 32px;
+    color: #8c8c8c;
+    padding-right: 15px;
+}
+.Container-custom > .div-cover-redirect > .Logout-button{
+    float: left;
+    width: 180px;
+    margin-left: 10px;
+    color: #fff;
+    border: none;
+    height: 40px;
+    white-space: nowrap;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+    border-right: 1px solid #ebebeb;
+    word-break: break-word;
+    background: #dc3333 !important;
+}
+.div-cover-redirect{
+    padding-top: 20px;
+}
+.center-button{
+    margin: 0 auto !important;
+    display: block !important;
+    float: none !important;
+}
+.div-cover-redirect > .Logout-button:hover{
+    box-shadow: none;
+    border-right: 1px solid #ebebeb;
+}
+.div-cover-redirect > .Logout-button:focus {
+    box-shadow: none;
+    border-right: 1px solid #ebebeb;
+}

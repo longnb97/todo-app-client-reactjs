@@ -1,0 +1,23 @@
+.full-screen{
+  right: 0;
+  position: absolute;
+  width: 100vw;
+  height: 200vh;
+  background: rgba(0,0,0, 0.4);
+  z-index: 100000;
+  top: 0;
+  padding-top: calc(50vh - 50px);
+
+}
+.spiner{
+  color: brown;
+  background-color: brown; 
+}
+._loading_overlay_content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:#fff;
+  font-weight: 500
+}

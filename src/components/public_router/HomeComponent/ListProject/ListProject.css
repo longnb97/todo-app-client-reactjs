@@ -1,0 +1,123 @@
+.title-slider-category {
+    text-align: left;
+    font-size: 20px;
+    color: #333;
+    font-weight: 800;
+    position: absolute;
+    top: -15px;
+    background: #fdfdfd;
+    padding: 0 20px;
+    /* font-family: 'Pacifico', cursive; */
+}
+
+.full-width {
+    width: 100%;
+}
+
+.list-project {
+    padding: 30px 20px;
+    border: 1px solid #002967;
+    margin: 50px 30px 30px 30px;
+    position: relative;
+}
+
+.project-item {
+    width: 100%;
+    background: #f4f5f7;
+    border: 4px solid #fdfdfd;
+    box-shadow: 0 0 2px #1661d0;
+    padding: 3% 3%;
+    margin: 20px 0;
+}
+
+.project-item:hover {
+    box-shadow: 0 0 12px #1661d0;
+    text-decoration: none;
+    color: #cfdcf0;
+    border-color: transparent !important;
+}
+
+.project-img {
+    width: 70px;
+    height: 70px;
+    float: left;
+    border: 1px solid #0848a7;
+    padding: 5px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.col-project-custom {
+    padding: 0 20px !important;
+}
+
+.description {
+    text-align: justify;
+    font-size: 12px;
+    color: #2d62af;
+    margin-top: 5px;
+}
+
+.project-name {
+    margin-bottom: 5px;
+    font-size: 18px;
+    margin-left: 15px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.project-user {
+    float: left;
+    margin-left: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+.project-user:hover {
+    transform: translateX(3px) translateY(-3px) scale(1.2);
+    border: 2px solid #fdfdfd;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #0a377b;
+}
+
+.users>.project-user:first-child {
+    margin-left: 15px;
+}
+
+.add-user {
+    background: #2196F3;
+    padding: 5px 5px 0px 5px;
+    color: #fff;
+    border-right: 5px solid #00F;
+    border-bottom: 5px solid #00F;
+    border-left: 5px solid transparent;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.add-user:hover {
+    background: #E91E63;
+}
+
+.spinnerClass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.text-loading{
+    font-size: 20px;
+    margin-top: 10px;
+}
+.due-date{
+    text-align: right;
+    color: #e84133;
+}
+.d-none{
+    display: none;
+}

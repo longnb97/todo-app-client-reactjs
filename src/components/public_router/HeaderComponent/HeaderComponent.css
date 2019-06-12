@@ -1,0 +1,206 @@
+/* header-contact */
+
+.Header-contact {
+    width: 100% !important;
+    height: 60px;
+}
+
+.whiteColorText {
+    color: #fff !important;
+}
+
+.Container-custom {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+    border: none;
+    background: transparent;
+}
+.Header-app{
+    height: 55px;
+    background: rgba(255,255,255);
+    box-shadow: 0 0 50px 0 rgba(0,0,0,.09);
+}
+.Header-background-first {
+    transition: top 2s;
+    background: #f4f5f7;
+}
+
+.Cart {
+    padding-top: 15px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.Container-custom>span {
+    float: left;
+    font-size: 12px;
+    line-height: 32px;
+    height: 32px;
+    color: #8c8c8c;
+    padding-right: 15px;
+}
+.full-height{
+    height: 100%;
+}
+.Logout-button {
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid;
+    color: #cacaca;
+    font-family: 'Pacifico', cursive;
+}
+
+.Logout-button:hover {
+    box-shadow: none;
+    color: #5abfbf;
+
+}
+
+.Logout-button:focus {
+    box-shadow: none;
+    border-right: 1px solid #ebebeb;
+}
+
+.Logout-button:active {
+    box-shadow: none !important;
+    outline: none !important;
+    border-right: 1px solid #ebebeb !important;
+}
+
+.Container-custom>a {
+    width: 32px;
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    color: #8c8c8c;
+    float: right;
+    border-right: 1px solid #ebebeb;
+    outline: none;
+    box-shadow: none;
+}
+
+.Container-custom>a>i.fab {
+    transition-duration: .6s;
+    width: 100%;
+    height: 100%;
+    line-height: 31px;
+}
+
+.Container-custom>a:hover {
+    border-color: #ebebeb;
+}
+
+.Container-custom>a:last-child {
+    border-left: 1px solid #ebebeb;
+}
+
+.Container-custom>a:hover>.fa-facebook-f:hover {
+    color: #fff;
+    background: #47649e !important;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.Container-custom>a:hover>.fa-twitter {
+    color: #fff;
+    background: #00a0d1 !important;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.Container-custom>a:hover>.fa-google {
+    color: #fff;
+    background: #dd4b39 !important;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+}
+
+/* header-contact */
+
+.web-name {
+    font-family: 'Pacifico', cursive;
+    font-size: 33px;
+    line-height: 55px;
+    color: #0052cc;
+}
+.Login-text, .SignUp-text{
+    font-size: 18px;
+    color: #0052cc;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* drop down */
+
+.dropbtn {
+    background-color: #fdfdfd;
+    color: #2196F3;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 16px;
+    text-align: center;
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 7px;
+    border: 3px solid #2196F3;
+    box-shadow: 0 0 0 3px #fdfdfd;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fdfdfd;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgb(189, 188, 188);
+    z-index: 1;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+    border: 2px solid #afa9a9;
+    border-radius: 10px;
+    margin-top: 1px;
+    box-shadow: inset 85px 30px 89px #141a1d;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    /* background-color: #3e8e41; */
+}
+.p-10{
+    padding: 10px !important;
+}
+.account{
+    width: 200px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
