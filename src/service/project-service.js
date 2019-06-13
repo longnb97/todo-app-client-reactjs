@@ -3,8 +3,8 @@ import { rootPath } from '../configs/enviroment';
 
 const baseUrl = `${rootPath}/api/projects`
 
-export function getAllProjectService() {
-   return http.get(baseUrl);
+export function getUserProjects(userId) {
+   return http.get(baseUrl + '/all_projects/user/' + userId);
 }
 
 export function createProject(projectInfo) {

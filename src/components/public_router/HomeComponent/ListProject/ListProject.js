@@ -22,16 +22,18 @@ export class ListProject extends React.Component {
 
   };
   componentDidMount() {
-    ProjectService.getAllProjectService().then(projects => {
-      this.setState({
-        listProject: projects.data.data,
-        getlistProjectSuccess: true
-      }, () => {console.log(this.state.listProject)});
-    });
+    let userData = JSON.parse(localStorage.getItem('userData'));
+    ProjectService.getUserProjects(userData.id)
+      .then(projects => {
+        this.setState({
+          listProject: projects.data.data,
+          getlistProjectSuccess: true
+        }, () => { console.log(this.state.listProject) });
+      });
   }
 
   _sliceText(text, max) {
-    if (text == undefined){
+    if (text == undefined) {
       return "_ _ _";
     }
     else if (text.length > max) {

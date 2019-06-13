@@ -23,6 +23,7 @@ import HomeComponent from "../../components/public_router/HomeComponent/HomeComp
 import FooterWithRouter from "../../components/public_router/FooterComponent/FooterComponent";
 import NotificationPermissionComponent from "../../components/public_router/NotificationPermissionComponent/NotificationPermissionComponent";
 import TaskComponent from "../../components/public_router/TaskComponent/TaskComponent";
+import { ListProject } from "../../components/public_router/HomeComponent/ListProject/ListProject";
 
 // Create store
 const store = createStore(rootReducer);
@@ -91,7 +92,7 @@ class AppContainer extends Component {
                 <Route path="/signup" exact component={SignUpComponent} />
                 <Route path="/login" exact component={LoginComponent} />
                 <Route path="/task/:id" exact component={TaskComponent} />
-
+                <Route path="/dashboard" exact component={ListProject} />
                 <Route
                   path="/redirect/without-permission"
                   exact
