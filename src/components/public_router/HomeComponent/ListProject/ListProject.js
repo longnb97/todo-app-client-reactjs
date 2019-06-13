@@ -31,11 +31,14 @@ export class ListProject extends React.Component {
   }
 
   _sliceText = (text, max) => {
-    if (text.length > max) {
-      return text.slice(0, max) + "...";
-    } else {
-      return text;
+    if(!text.length>0){
+      if (text.length > max) {
+        return text.slice(0, max) + "...";
+      } else {
+        return text;
+      }
     }
+    else return ''
   }
 
   datePick = (date) => {
