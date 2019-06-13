@@ -26,19 +26,19 @@ export class ListProject extends React.Component {
       this.setState({
         listProject: projects.data.data,
         getlistProjectSuccess: true
-      });
+      }, () => {console.log(this.state.listProject)});
     });
   }
 
-  _sliceText = (text, max) => {
-    if(!text.length>0){
-      if (text.length > max) {
-        return text.slice(0, max) + "...";
-      } else {
-        return text;
-      }
+  _sliceText(text, max) {
+    if (text == undefined){
+      return "_ _ _";
     }
-    else return ''
+    else if (text.length > max) {
+      return text.slice(0, max) + "...";
+    } else {
+      return text;
+    }
   }
 
   datePick = (date) => {
