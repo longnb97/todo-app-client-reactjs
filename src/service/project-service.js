@@ -4,9 +4,9 @@ import { rootPath } from '../configs/enviroment';
 const baseUrl = `${rootPath}/api/projects`
 
 export function getUserProjects(userId) {
-   return http.get(baseUrl + '/all_projects/user/' + userId);
+   return http.get(baseUrl + '/user/' + userId);
 }
 
-export function createProject(projectInfo) {
+export function createNewProject(projectInfo) {
    return http.post(baseUrl, projectInfo);
 } 
