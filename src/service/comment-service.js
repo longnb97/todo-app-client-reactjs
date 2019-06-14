@@ -8,3 +8,7 @@ export function getAllCommentInTask(taskId) {
 export function getAllUserInProject(projectID) {
     return http.get(`${rootPath}/api/projects/${projectID}/participants`);
 } 
+
+export function createNewComment(newComment) {
+    return http.post(`${rootPath}/api/comments`, newComment );
+} 

@@ -1,13 +1,17 @@
 .task-comment{
     width: 80%;
     height: 76%;
-    background: #f4f5f7;
+    background: #ffffff;
     position: relative;
+    border-radius: 15px;
+}
+.col-comment-custom{
+    padding: 0 0px !important;
 }
 .exit-button{
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 10px;
+    top: 10px;
     width: 40px;
     height: 40px;
     background: #e9eaed;
@@ -28,7 +32,7 @@
     padding: 20px 15px;
 }
 .img-task{
-    max-height: 450px;
+    max-width: 95%;
 }
 .task-description-detail{
     font-size: 20px;
@@ -41,7 +45,8 @@
     margin-right: 10px;
 }
 .des-text{
-    color: #333;
+    width: 100px;
+    display: inline-block;
 }
 .Col-reset{
     height: 100%;
@@ -53,4 +58,81 @@
     border: none;
     border-right: 5px solid #a0a0ad;
     /* border-style: double; */
+}
+.comment-item{
+    padding: 8px 15px;
+    background-color: #f2f3f5;
+    border-radius: 25px;
+    display: flex;
+    width: fit-content;
+    margin-top: 10px;
+}
+
+.user-name{
+    color: #385898;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: normal;
+    word-break: break-word;
+}
+.user-comment{
+    color: #1c1e21;
+    white-space: normal;
+    word-break: break-word;
+    font-size: 16px;
+}
+.spinnerClass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px auto 10px auto;
+}
+.cover-coment{
+    overflow-y: scroll;
+    width: 100%;
+    height: calc(100% - 90px);
+    padding: 20px 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+.create-new-comment{
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+}
+.input-create-comment{
+    background: #e9eaed;
+    border: 2px solid #fff;
+    box-shadow: 0 0 4px #737373;
+    width: calc( 100% - 121px);
+    height: 50px;
+    border-radius: 50px;
+    margin-right: 15px;
+    padding-left: 40px;
+    padding-right: 15px;
+}
+.input-create-comment:focus {
+    border-color: #f1f1f1 !important;
+}
+.add-comment{
+    width: 50px;
+    height: 50px;
+    background: #e9eaed;
+    border-radius: 50%;
+    z-index: 200;
+    border: 4px solid #ffffff;
+    box-shadow: 0 0 7px #6F6362;
+    color: #333;
+    padding: 0 0;
+}
+.add-comment:hover{
+    background: #6F6362 !important;
+    color: #fff !important;
+    border: 4px solid #ffffff;
+}
+.margin-left-10px{
+    margin-left: 10px !important;
+    display: block !important;
 }

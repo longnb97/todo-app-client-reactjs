@@ -1,4 +1,5 @@
-﻿/* eslint-disable default-case */
+﻿/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable default-case */
 import React, { Component } from "react";
 import "./TaskComponent.css";
 import { Row, Col, Button } from "react-bootstrap";
@@ -38,7 +39,7 @@ class TaskComponent extends Component {
   }
 
   componentDidMount() {
-    this._getAllUserInProject();
+    // this._getAllUserInProject();
     this._getAllTask();
     if (this.props.match.params.id === undefined) {
       this.setState({ noPram: true });
@@ -125,19 +126,32 @@ class TaskComponent extends Component {
   renderListTaskDetail(tasks) {
     let listRender = tasks.map((task, index) => (
       <div className="task-cover" key={index} 
-       onClick={(e) => { 
-         this.passTaskItemToEditTaskComponent(task);
-         if(true){
-          console.log(e);
-         }
-         this.openTaskComentFromParent(); 
-         }
-        }>
+         onClick={(e) => { 
+            if(e.target && e.target.matches("img.edit-task-img") ){ // tag.className
+                // console.log('click img');
+              }
+              else{
+                // console.log('no click img');
+                this.passTaskItemToEditTaskComponent(task);this.openTaskComentFromParent(); 
+              }
+            }
+          }
+      >
         <div>
           <p className="task-name">
             {task.description}
-            <img  src={require("../../../assets/image/icon/edit.png")}
-              onClick={() => { this.openFormEditTaskFromParent(); this.passTaskItemToEditTaskComponent(task); }}
+            <img src={require("../../../assets/image/icon/edit.png")}
+              onClick={(e) => { 
+                if(e.target && e.target.matches("img.edit-task-img") ){ // tag.className
+                    // console.log('click img');
+                    this.openFormEditTaskFromParent(); this.passTaskItemToEditTaskComponent(task); 
+                  }
+                  else{
+                    // console.log('no click img')
+                    this.openTaskComentFromParent(); 
+                  }
+                }
+              }
               className="edit-task-img"  />
           </p>
           <p className="text-left">
