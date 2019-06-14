@@ -45,7 +45,7 @@ class LoginComponent extends Component {
       componentDidMount: false,
       isFirst: true,
       from: "/",
-      registerSuccess : false,
+      registerSuccess: false,
       tokenExprise: false,
       isLoading: false
     };
@@ -55,12 +55,12 @@ class LoginComponent extends Component {
     this.props.dispatchReduxLogin(authenticationInfo);
   }
 
-  componentWillMount(){
-    if(this.props.location.statusRegister != undefined && this.props.location.statusRegister === "success" ){
-      this.setState({registerSuccess : true})
+  componentWillMount() {
+    if (this.props.location.statusRegister != undefined && this.props.location.statusRegister === "success") {
+      this.setState({ registerSuccess: true })
     }
-    if( this.props.location.tokenExprise != undefined && this.props.location.tokenExprise === "tokenExprise"){
-      this.setState({tokenExprise : true})
+    if (this.props.location.tokenExprise != undefined && this.props.location.tokenExprise === "tokenExprise") {
+      this.setState({ tokenExprise: true })
     }
   }
 
@@ -70,7 +70,7 @@ class LoginComponent extends Component {
     if (this.props.location.state !== undefined) {
       let prePathName = this.props.location.state.detail.detail;
       this.setState({
-        from: { pathname: prePathName} 
+        from: { pathname: prePathName }
       });
     } else {
       this.setState({ from: { pathname: "/" } });
@@ -97,29 +97,35 @@ class LoginComponent extends Component {
     let userAccount = new AccoutLoginModel();
     userAccount.password = pass;
     userAccount.email = email;
-    this.setState({isLoading: true}, () => {
+    this.setState({ isLoading: true }, () => {
       loginService(userAccount).then(resLogin => {
         console.log(resLogin);
 
         if (resLogin !== undefined && resLogin.data.success === 0) {
-          this.setState({ resMessage: 'Có lỗi xảy ra! Hãy thử lại', isLogin: false, role: null, isLoading: false   });
-        } else if (resLogin !== undefined && resLogin.data.success === 1) {
-          localStorage.setItem('userData', JSON.stringify(resLogin.data.data) );
-          setStorageService("token", resLogin.data.data.access_token).then(() => {
-            this._dispatchReduxLogin({isLogin: true, role : resLogin.data.role});
-            ToastsStore.success("Đăng nhập thành công !");
-            this.setState({ redirectToReferrer: true, isLoading: false });
-          });
+          this.setState({ resMessage: 'Có lỗi xảy ra! Hãy thử lại', isLogin: false, role: null, isLoading: false });
         }
-
-      }).catch(
-        (errLogin) => {
-          console.log(errLogin);
-          this.setState({ redirectToReferrer: false, isLoading: false });
-          this._dispatchReduxLogin({ isLogin: false, role: null, isLoading: false  });
-          ToastsStore.error("Có lỗi xảy ra, hãy đăng nhập lại !");
-        } 
-      )
+        else if (resLogin !== undefined && resLogin.data.success === 1) {
+          localStorage.setItem('userData', JSON.stringify(resLogin.data.data));
+          setStorageService("token", resLogin.data.data.access_token)
+            .then(() => {
+              this._dispatchReduxLogin({ isLogin: true, role: resLogin.data.role });
+              ToastsStore.success("Đăng nhập thành công !");
+              this.setState({ redirectToReferrer: true, isLoading: false }, () => {
+                this.props.history.push({
+                  pathname: "/dashboard"
+                });
+              });
+            });
+        }
+      })
+        .catch(
+          (errLogin) => {
+            console.log(errLogin);
+            this.setState({ redirectToReferrer: false, isLoading: false });
+            this._dispatchReduxLogin({ isLogin: false, role: null, isLoading: false });
+            ToastsStore.error("Có lỗi xảy ra, hãy đăng nhập lại !");
+          }
+        )
     });
   }
 
@@ -137,8 +143,8 @@ class LoginComponent extends Component {
           />
           <div className="limiter Background-login">
             <div className="container-login100 Background-form-login">
-            <p className= {"success-register-text " + ( this.state.registerSuccess === true ? "" : "Display-none")}>Bạn vừa đăng kí thành công tài khoản mới, hãy đăng nhập với tài khoản vừa tạo</p>
-            <p className= {"success-register-text " + ( this.state.tokenExprise === true ? "" : "Display-none")}>Phiên đăng nhập của bạn đã kết thúc, vui lòng đăng nhập lại.</p>
+              <p className={"success-register-text " + (this.state.registerSuccess === true ? "" : "Display-none")}>Bạn vừa đăng kí thành công tài khoản mới, hãy đăng nhập với tài khoản vừa tạo</p>
+              <p className={"success-register-text " + (this.state.tokenExprise === true ? "" : "Display-none")}>Phiên đăng nhập của bạn đã kết thúc, vui lòng đăng nhập lại.</p>
               <div className="wrap-login100 p-l-50 p-r-50 p-t-62 p-b-33 Scaledow-form-login">
                 <form className="login100-form validate-form flex-sb flex-w">
                   <span className="login100-form-title p-b-15">Đăng nhập</span>
@@ -169,8 +175,8 @@ class LoginComponent extends Component {
                       className={
                         "Input-invalid " +
                         (this.state.emailInputLostFocus === true &&
-                        this.state.emailInputFocus === true &&
-                        _validateEmail(this.state.email) === false
+                          this.state.emailInputFocus === true &&
+                          _validateEmail(this.state.email) === false
                           ? "Display-block"
                           : "Display-none")
                       }
@@ -210,9 +216,9 @@ class LoginComponent extends Component {
                       className={
                         "Input-invalid " +
                         (this.state.passwordInputLostFocus === true &&
-                        this.state.passwordInputFocus === true &&
-                        _maxLength(30, this.state.password) === false &&
-                        _minLength(4, this.state.password) === false
+                          this.state.passwordInputFocus === true &&
+                          _maxLength(30, this.state.password) === false &&
+                          _minLength(4, this.state.password) === false
                           ? "Display-block"
                           : "Display-none")
                       }
@@ -242,21 +248,21 @@ class LoginComponent extends Component {
                       className={
                         "login100-form-btn " +
                         (this.state.password === "" ||
-                        this.state.email === "" ||
-                        _validateEmail(this.state.email) === false
+                          this.state.email === "" ||
+                          _validateEmail(this.state.email) === false
                           ? "Opacity-disable"
                           : "btn-type-user-login-form-valid")
                       }
                       disabled={
-                        this.state.isLoading ===  true ||
-                        this.state.password === "" ||
-                        this.state.email === "" ||
-                        _validateEmail(this.state.email) === false
+                        this.state.isLoading === true ||
+                          this.state.password === "" ||
+                          this.state.email === "" ||
+                          _validateEmail(this.state.email) === false
                           ? true
                           : false
                       }
                     >
-                       { this.state.isLoading !== true ? <span>Đăng nhập</span> : <span> Loading ...</span>} 
+                      {this.state.isLoading !== true ? <span>Đăng nhập</span> : <span> Loading ...</span>}
                     </Button>
                     <span className="focus-input100" />
                   </div>
