@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import "./TaskComentComponent.css";
+import "./TaskCommentComponent.css";
 import { Row, Col, Button } from "react-bootstrap";
 import Spinner from "react-spinner-material";
 import { RadioGroup, Radio } from "react-radio-group";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import { getInfoUserLocal } from "../../../../service/login-service";
-import { addNewTask } from "../../../../service/task-service";
+
 import {
   ToastsContainer,
   ToastsStore,
   ToastsContainerPosition
 } from "react-toasts";
 
-class TaskComentComponent extends Component {
+class TaskCommentComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +33,7 @@ class TaskComentComponent extends Component {
   }
 
   componentDidMount() {
-    // this.props.openFormPropEvent(this._openForm);
+    this.props.openFormPropEvent(this.openFormTaskComent);
     // let userInfo = getInfoUserLocal();
     // if (userInfo !== undefined) {
     //   this.setState({ ownerId: userInfo.id });
@@ -50,6 +50,7 @@ class TaskComentComponent extends Component {
   }
 
   openFormTaskComent() {
+    console.log('open');
     let isOpenFormAdd = this.state.isOpenFormAdd;
     this.setState({ isOpenFormAdd: !isOpenFormAdd });
     this.resetData();
@@ -90,4 +91,4 @@ class TaskComentComponent extends Component {
   }
 }
 
-export default TaskComentComponent;
+export default TaskCommentComponent;

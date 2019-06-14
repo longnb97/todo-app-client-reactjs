@@ -22,3 +22,9 @@
 .d-inline{
   display: inline;
 }
+
+.center-child{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

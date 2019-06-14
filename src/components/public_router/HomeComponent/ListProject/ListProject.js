@@ -26,6 +26,7 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "0%",
+    minWidth: "400px",
     transform: "translate(-50%, -50%)"
   }
 };
@@ -89,8 +90,7 @@ export class ListProject extends React.Component {
   onInputChange = e => {
     let stateName = e.target.name;
     let data = e.target.value;
-    // console.log(stateName);
-    this.setState({ [stateName]: data }, () => console.log(this.state.name));
+    this.setState({ [stateName]: data });
   };
 
   createProject = () => {
@@ -98,7 +98,6 @@ export class ListProject extends React.Component {
     let user = JSON.parse(localStorage.getItem("userData"));
     let accountId = user.id;
     let data = { name, type, description, accountId, dueDate };
-    console.log(data);
     ProjectService.createNewProject(data)
       .then(response => {
         console.log(response);
@@ -133,31 +132,13 @@ export class ListProject extends React.Component {
             <div className="project-img">
               {this.getFirstCharacterProjectName(project.name)}
             </div>
-            <div className="flex-1">
-              <p className="h-30px" />
-              <div className="users">
-                <img
-                  src={require("../../../../assets/image/icon/icon-google.png")}
-                  className="project-user"
-                />
-                <img
-                  src={require("../../../../assets/image/icon/icon-google.png")}
-                  className="project-user"
-                />
-                <img
-                  src={require("../../../../assets/image/icon/icon-google.png")}
-                  className="project-user"
-                />
-                <span className="add-user"> Add </span>
-              </div>
+            <div className="wrap-name">
+                 <p className="project-name">{project.name}</p>
             </div>
           </div>
-
-          <p className="project-name">{project.name}</p>
-
-          <div className="description">
+          {/* <div className="description">
             {this._sliceText(project.description, 30)}
-          </div>
+          </div> */}
           <div className="cover-date">
             <div className="start-date">
               {this.formatTime(project.created_at)}
@@ -201,11 +182,14 @@ export class ListProject extends React.Component {
             md={3}
             lg={3}
             className="No-padding text-center col-project-custom"
-          >
-            <button className="btn btn-primary" onClick={this.showModal}>
+            className={"No-padding text-center col-project-custom center-child " + (this.state.getlistProjectSuccess === true ? "" : "d-none")} >
+            <div className= "project-item center-child">
+            <p className="btn btn-primary btn-add-project " onClick={this.showModal}>
               +
-            </button>
+            </p>
+            </div>
           </Col>
+
         </Row>
         <div />
         <ReactModal
@@ -254,12 +238,11 @@ export class ListProject extends React.Component {
           </div>
           <div className="form-group">
             <label htmlFor="exampleFormControlTextarea1">Due date</label>
-            <DatePicker
-              selected={this.state.dueDate}
-              onChange={date => {
-                this.datePick(date);
-              }}
-              dateFormat="yyyy/MM/dd"
+            <input
+              className="input-text input-date-edit"
+              type="date"
+              dateFormat= 'yy-mm-dd'
+              onChange={e => { this.setState({dueDate  : e.target.value })} }
             />
           </div>
           <button className="btn btn-primary" onClick={this.createProject}>

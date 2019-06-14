@@ -7,7 +7,8 @@ import Spinner from "react-spinner-material";
 import EditTaskComponent from "./EditTaskComponent/EditTaskComponent";
 import AddTaskComponent from "./AddTaskComponent/AddTaskComponent";
 import moment from "moment";
-import TaskComentComponent from "./TaskComentComponent/AddTaskComponent";
+import TaskCommentComponent from "./TaskComentComponent/TaskCommentComponent";
+
 
 class TaskComponent extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class TaskComponent extends Component {
     };
     this.openFormEditTaskFromParent = this.openFormEditTaskFromParent.bind(this);
     this.openFormAddTaskFromParent = this.openFormAddTaskFromParent.bind(this);
-    this.openTaskComentComponent = this.openTaskComentComponent.bind(this);
+    this.openTaskComentFromParent = this.openTaskComentFromParent.bind(this);
   }
 
   componentDidMount() {
@@ -73,7 +74,7 @@ class TaskComponent extends Component {
 
   openFormEditTaskFromParent() {}
   openFormAddTaskFromParent() {}
-  openTaskComentComponent(){}
+  openTaskComentFromParent(){}
 
   passTaskItemToEditTaskComponent(task) {
     this.setState({ taskEdit: task });
@@ -97,7 +98,7 @@ class TaskComponent extends Component {
 
   renderListTaskDetail(tasks) {
     let listRender = tasks.map((task, index) => (
-      <div className="task-cover" key={index}  onClick = {this.openTaskComentComponent}>
+      <div className="task-cover" key={index}  onClick={this.openTaskComentFromParent}>
         <div>
           <p className="task-name">
             {task.description}
@@ -367,8 +368,8 @@ class TaskComponent extends Component {
               (this.openFormAddTaskFromParent = click)
             }
           />
-          <TaskComentComponent
-            openFormPropEvent={click => (this.openTaskComentComponent = click) }
+          <TaskCommentComponent
+            openFormPropEvent={click => (this.openTaskComentFromParent = click) }
           />
         </div>
       </div>
