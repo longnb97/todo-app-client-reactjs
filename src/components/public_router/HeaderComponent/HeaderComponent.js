@@ -10,6 +10,8 @@ import {
   ToastsStore,
   ToastsContainerPosition
 } from "react-toasts";
+import { getInfoUserLocal } from "../../../service/login-service";
+
 
 const orangeColorText = {
   color: "#f57224"
@@ -25,7 +27,11 @@ class HeaderComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPathName: ""
+      currentPathName: "",
+      isLogin: false,
+      userInfo: {
+        email: ""
+      }
     };
   }
 
@@ -44,10 +50,22 @@ class HeaderComponent extends Component {
     history.push("/");
   }
 
+  getFirstCharacterProjectName(projectName) {
+    let firstCharacter = projectName.slice(0, 1);
+    return firstCharacter.toString().toUpperCase();
+  }
+
+
   componentDidMount() {
-    // console.log(this.props.location.pathname);
-    console.log(this.props.listState.authenticationInfo.role);
+    const { history } = this.props;
     this.setState({ currentPathName: this.props.location.pathname });
+
+    let token = localStorage.getItem('token');
+    let userInfo = getInfoUserLocal();
+    if(token != null && token !== undefined && token !== ""){
+      this.setState({isLogin :  true, userInfo: userInfo}, () => {history.push("/");})
+    }
+
   }
   render() {
     return (
@@ -74,7 +92,7 @@ class HeaderComponent extends Component {
                   <div
                     className={
                       "No-padding account " +
-                      (this.props.listState.authenticationInfo.isLogin === true
+                      (this.state.isLogin === true
                         ? "Display-none"
                         : "align-items-center d-flex flex-row p-10")
                     }
@@ -95,33 +113,21 @@ class HeaderComponent extends Component {
                   <div
                     className={
                       "dropdown " +
-                      (this.props.listState.authenticationInfo.isLogin !== true
-                        ? "Display-none"
-                        : "")
+                      (this.state.isLogin === true
+                        ? ""
+                        : "Display-none")
                     }
                   >
-                    <button className="dropbtn">Q</button>
-                    <div className="dropdown-content">
+                    <button className=" dropbtn">{this.getFirstCharacterProjectName(this.state.userInfo.email)}</button>
+                    <div className="dropdown-content" >
                       <p
-                        className={
-                          "Logout-button " +
-                          (this.props.listState.authenticationInfo.isLogin !==
-                          true
-                            ? "Display-none"
-                            : "")
-                        }
+                        className="Logout-button "
                         onClick={this._dispatchReduxLogOut.bind(this)}
                       >
-                        Log Out
+                        Đăng xuất
                       </p>
                       <p
-                        className={
-                          "Logout-button " +
-                          (this.props.listState.authenticationInfo.isLogin !==
-                          true
-                            ? "Display-none"
-                            : "")
-                        }
+                        className= "Logout-button "
                         onClick={this._dispatchReduxLogOut.bind(this)}
                       >
                         Profile

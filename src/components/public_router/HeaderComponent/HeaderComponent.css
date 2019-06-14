@@ -50,7 +50,7 @@
     padding: 10px;
     font-size: 16px;
     border-bottom: 1px solid;
-    color: #cacaca;
+    color: #6184b7;
     font-family: 'Pacifico', cursive;
 }
 
@@ -164,17 +164,16 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fdfdfd;
+    background-color: #f5f5f5;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgb(189, 188, 188);
+    box-shadow: 0px 0px 3px 0px rgb(0, 123, 255);
     z-index: 1;
     right: 0;
     padding: 10px;
     cursor: pointer;
-    border: 2px solid #afa9a9;
+    border: 5px solid #fdfdfd;
     border-radius: 10px;
-    margin-top: 1px;
-    box-shadow: inset 85px 30px 89px #141a1d;
+    margin-top: 5px;
 }
 
 .dropdown-content a {

@@ -16,7 +16,7 @@
 
 .list-project {
     padding: 30px 20px;
-    border: 1px solid #002967;
+    border: 3px solid #99b1d8;
     margin: 50px 30px 30px 30px;
     position: relative;
 }
@@ -53,7 +53,7 @@
     width: 70px;
     height: 70px;
     float: left;
-    border: 5px solid #00BCD4;
+    border: 3px solid #00BCD4;
     border-radius: 50%;
     box-shadow: 0px 0px 8px #bbd1f3;
     line-height: 60px;
@@ -82,6 +82,7 @@
 
 .project-name {
     width: 100%;
+    font-weight: bold;
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
@@ -92,11 +93,9 @@
     text-transform: capitalize;
     padding-left: 13px;
     margin-top: 15px;
-    border: 5px solid #00BCD4;
     border-left: none;
     height: 40px;
     margin-left: -7px;
-    box-shadow: 0px 0px 8px #bbd1f3;
 }
 
 .project-user {
@@ -151,8 +150,7 @@
     margin-top: 8px;
 }
 .due-date{
-    color: #fff !important;
-    background: #e73d2f;
+    color: #e73d2f !important;
     width: 100px;
     border-radius: 5px;
     text-align: center !important;
@@ -161,8 +159,7 @@
 }
 
 .start-date{
-    color: #fff;
-    background: #0e85e4;
+    color: #0e85e4;
     width: 100px;
     border-radius: 5px;
     text-align: center;

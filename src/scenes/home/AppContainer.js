@@ -13,6 +13,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "../../redux/reducers/rootReduces";
 import { Login } from "../../redux/actions/checkAuthorizeAction";
+import PrivateRoute from "./PrivateRoute";
 
 import HeaderComponent from "../../components/public_router/HeaderComponent/HeaderComponent";
 import LoginComponent from "../../components/private_router/General/LoginComponent/LoginComponent";
@@ -83,16 +84,15 @@ class AppContainer extends Component {
             <HeaderComponent />
             <div id="Wrap-router">
               <Switch>
-                <Route
-                  history={createBrowserHistory}
-                  path="/"
-                  exact
-                  component={HomeComponent}
-                />
                 <Route path="/signup" exact component={SignUpComponent} />
                 <Route path="/login" exact component={LoginComponent} />
-                <Route path="/task/:id" exact component={TaskComponent} />
-                <Route path="/dashboard" exact component={ListProject} />
+                {/* <Route path="/task/:id" exact component={TaskComponent} />
+                <Route path="/dashboard" exact component={ListProject} /> */}
+                <PrivateRoute  path="/dashboard" exact  component={ListProject} />
+                <PrivateRoute  path="/" exact  component={HomeComponent} />
+                <PrivateRoute  path="/task/:id" exact  component={TaskComponent} />
+
+
                 <Route
                   path="/redirect/without-permission"
                   exact
