@@ -47,7 +47,8 @@ class HeaderComponent extends Component {
     this.props.dispatchReduxLogOut({ isLogin: false, role: null });
     localStorage.removeItem("token");
     localStorage.removeItem("typeUser");
-    history.push("/");
+    localStorage.removeItem("userData");
+    history.push("/login");
   }
 
   getFirstCharacterProjectName(projectName) {
@@ -86,7 +87,7 @@ class HeaderComponent extends Component {
               >
                 <Link to="/" className="web-name">
                   {" "}
-                  Trello
+                  Happy developers
                 </Link>
 
                   <div
@@ -125,12 +126,6 @@ class HeaderComponent extends Component {
                         onClick={this._dispatchReduxLogOut.bind(this)}
                       >
                         Đăng xuất
-                      </p>
-                      <p
-                        className= "Logout-button "
-                        onClick={this._dispatchReduxLogOut.bind(this)}
-                      >
-                        Profile
                       </p>
                     </div>
                   </div>
