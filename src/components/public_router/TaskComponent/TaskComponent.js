@@ -8,6 +8,12 @@ import EditTaskComponent from "./EditTaskComponent/EditTaskComponent";
 import AddTaskComponent from "./AddTaskComponent/AddTaskComponent";
 import moment from "moment";
 import TaskCommentComponent from "./TaskComentComponent/TaskCommentComponent";
+import { getAllUserInProject } from "../../../service/comment-service";
+import {
+  ToastsContainer,
+  ToastsStore,
+  ToastsContainerPosition
+} from "react-toasts";
 
 
 class TaskComponent extends Component {
@@ -15,6 +21,7 @@ class TaskComponent extends Component {
     super(props);
     this.state = {
       noPram: false,
+      listUserInProject: [],
       listTaskToDo: [],
       listTaskDoing: [],
       listTaskDone: [],
@@ -31,13 +38,32 @@ class TaskComponent extends Component {
   }
 
   componentDidMount() {
-    this.getAllTask();
+    this._getAllUserInProject();
+    this._getAllTask();
     if (this.props.match.params.id === undefined) {
       this.setState({ noPram: true });
     }
   }
 
-  getAllTask() {
+  _getAllUserInProject(){
+    getAllUserInProject(this.props.match.params.id).then(
+      resUsers => {
+        if (resUsers && resUsers.success === 1){
+          this.setState({listUserInProject :resUsers.data.data })
+        }
+        else{
+          ToastsStore.error("Có lỗi xảy ra, hãy thử lại !");
+        }
+      }
+    ).catch(
+      e => {
+        console.log('Lấy danh sách user thất bại');
+        ToastsStore.error("Có lỗi xảy ra, hãy thử lại !");
+      }
+    )
+  }
+
+  _getAllTask() {
     let listTaskToDo = [],
       listTaskDoing = [],
       listTaskDone = [];
@@ -61,11 +87,11 @@ class TaskComponent extends Component {
             getDataSuccess: true
           },
           () => {
-            console.log(
-              this.state.listTaskDoing,
-              this.state.listTaskToDo,
-              this.state.listTaskDone
-            );
+            // console.log(
+            //   this.state.listTaskDoing,
+            //   this.state.listTaskToDo,
+            //   this.state.listTaskDone
+            // );
           }
         );
       }
@@ -98,18 +124,21 @@ class TaskComponent extends Component {
 
   renderListTaskDetail(tasks) {
     let listRender = tasks.map((task, index) => (
-      <div className="task-cover" key={index}  onClick={this.openTaskComentFromParent}>
+      <div className="task-cover" key={index} 
+       onClick={(e) => { 
+         this.passTaskItemToEditTaskComponent(task);
+         if(true){
+          console.log(e);
+         }
+         this.openTaskComentFromParent(); 
+         }
+        }>
         <div>
           <p className="task-name">
             {task.description}
-            <img
-              src={require("../../../assets/image/icon/edit.png")}
-              onClick={() => {
-                this.openFormEditTaskFromParent();
-                this.passTaskItemToEditTaskComponent(task);
-              }}
-              className="edit-task-img"
-            />
+            <img  src={require("../../../assets/image/icon/edit.png")}
+              onClick={() => { this.openFormEditTaskFromParent(); this.passTaskItemToEditTaskComponent(task); }}
+              className="edit-task-img"  />
           </p>
           <p className="text-left">
             Ngày hết hạn:{" "}
@@ -248,7 +277,10 @@ class TaskComponent extends Component {
             dữ liệu, nhưng không tìm thấy. Vui lòng kiểm tra lại, hoặc truy cập
             từ một nguồn xác định
           </p>
-
+          <ToastsContainer
+            store={ToastsStore}
+            position={ToastsContainerPosition.TOP_RIGHT}
+          />
           <Row className="all-task">
             <Col
               xs={12}
@@ -369,6 +401,8 @@ class TaskComponent extends Component {
             }
           />
           <TaskCommentComponent
+            listUserInProject = {this.state.listUserInProject}
+            currentTask={this.state.taskEdit}
             openFormPropEvent={click => (this.openTaskComentFromParent = click) }
           />
         </div>

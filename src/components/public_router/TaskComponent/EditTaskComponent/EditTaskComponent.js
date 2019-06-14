@@ -279,7 +279,7 @@ class EditTaskComponent extends Component {
                   <input
                       className="input-text input-date-edit"
                       type="date"
-                      dateFormat= 'yy-mm-dd'
+                      // dateFormat= 'yy-mm-dd'
                       onChange={e => { this.setState({ newtaskDueDate: e.target.value })} }
                     />{" "}
                     dd/mm/yyyy

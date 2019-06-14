@@ -153,7 +153,7 @@ class AddTaskComponent extends Component {
               <input
                 className="input-text input-date"
                 type="date"
-                dateFormat= 'yy-mm-dd'
+                // dateFormat= 'yy-mm-dd'
                 value={this.state.taskDueDate}
                 onChange={e => this.setState({ taskDueDate: e.target.value })}
               />{" "}

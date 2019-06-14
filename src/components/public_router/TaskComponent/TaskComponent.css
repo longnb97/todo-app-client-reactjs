@@ -56,6 +56,7 @@
     margin-bottom: 10px;
     width: 95%;
     margin: 10px auto;
+    cursor: pointer;
 }
 .task-cover:hover{
     box-shadow: 0 0 5px #2b5fad;

@@ -241,7 +241,7 @@ export class ListProject extends React.Component {
             <input
               className="input-text input-date-edit"
               type="date"
-              dateFormat= 'yy-mm-dd'
+              // dateFormat= 'yy-mm-dd'
               onChange={e => { this.setState({dueDate  : e.target.value })} }
             />
           </div>
