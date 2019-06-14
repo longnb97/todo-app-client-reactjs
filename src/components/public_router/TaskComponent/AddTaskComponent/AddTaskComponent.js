@@ -61,7 +61,7 @@ class AddTaskComponent extends Component {
       image:
         this.state.taskImg !== ""
           ? this.state.taskImg
-          : "https://www.google.com/imgres?imgurl=https%3A%2F%2Fkenh14cdn.com%2F2019%2F2%2F24%2F3561716420480213454575853861059020806684672n-15510057259571546306615.jpg&imgrefurl=http%3A%2F%2Fkenh14.vn%2Fbiet-viet-nam-co-ca-ro-girl-xinh-nhung-bau-moi-chinh-la-nguoi-duoc-goi-ten-nhieu-nhat-tren-cac-dien-dan-gai-dep-20190224180243643.chn&docid=2lYk3NVAra-HZM&tbnid=heZvU_4BzlXb4M%3A&vet=10ahUKEwiPopOAvuXiAhWQBKYKHZhQC_QQMwhNKAMwAw..i&w=1080&h=1350&safe=active&bih=657&biw=1366&q=image%20girl%20xinh&ved=0ahUKEwiPopOAvuXiAhWQBKYKHZhQC_QQMwhNKAMwAw&iact=mrc&uact=8"
+          : "https://haihoa.emmasoft.com.vn/artgallery/download?folder=collections&file=s%C3%A2n%20ph%C6%A1i%20htx.jpg"
     };
     console.log(newTask);
     if (newTask.project_id === "" || newTask.description === "") {

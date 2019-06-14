@@ -31,7 +31,8 @@ class TaskComponent extends Component {
       classFormEdit: "d-none-width-height",
       taskEdit: {},
       tasksNameAdded: "", // add của cột nào
-      tasksNameEdited: "" // edit của cột nào
+      tasksNameEdited: "", // edit của cột nào
+      getListNullOrErr : false
     };
     this.openFormEditTaskFromParent = this.openFormEditTaskFromParent.bind(this);
     this.openFormAddTaskFromParent = this.openFormAddTaskFromParent.bind(this);
@@ -85,18 +86,18 @@ class TaskComponent extends Component {
             listTaskToDo: listTaskToDo,
             listTaskDoing: listTaskDoing,
             listTaskDone: listTaskDone,
-            getDataSuccess: true
-          },
-          () => {
-            // console.log(
-            //   this.state.listTaskDoing,
-            //   this.state.listTaskToDo,
-            //   this.state.listTaskDone
-            // );
+            getDataSuccess: true,
+            getListNullOrErr: false
           }
         );
       }
-    });
+    }).catch(
+      e => {
+        console.log(e);
+        ToastsStore.error("Có lỗi xảy ra, hãy thử lại !");
+        this.setState({getListNullOrErr: true, getDataSuccess : true})
+      }
+    )
   }
 
   openFormEditTaskFromParent() {}
@@ -181,19 +182,19 @@ class TaskComponent extends Component {
           let listTaskToDo = Object.assign([], this.state.listTaskToDo);
           listTaskToDo.push(task);
           this.setState({ listTaskToDo: listTaskToDo });
-          this.getAllTask(); // lấy lại dữ liệu cho chắc ăn
+          this._getAllTask(); // lấy lại dữ liệu cho chắc ăn
           break;
         case "doing":
           let listTaskDoing = Object.assign([], this.state.listTaskDoing);
           listTaskDoing.push(task);
           this.setState({ listTaskDoing: listTaskDoing });
-          this.getAllTask(); // lấy lại dữ liệu cho chắc ăn
+          this._getAllTask(); // lấy lại dữ liệu cho chắc ăn
           break;
         case "done":
           let listTaskDone = Object.assign([], this.state.listTaskDone);
           listTaskDone.push(task);
           this.setState({ listTaskDone: listTaskDone });
-          this.getAllTask(); // lấy lại dữ liệu cho chắc ăn
+          this._getAllTask(); // lấy lại dữ liệu cho chắc ăn
           break;
         default:
           break;

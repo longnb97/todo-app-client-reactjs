@@ -69,7 +69,7 @@ class TaskCommentComponent extends Component {
           if(resCreateComment.data.success === 1){
             let comments = Object.assign([], this.state.listComment);
             comments.push(newComment);
-            this.setState({ listComment:comments ,  sendingComment : false, newCommentContent: ""})
+            this.setState({ listComment:comments , loadCommentErr: this.formatTime,  sendingComment : false, newCommentContent: ""})
           }
         }
       ).catch(
@@ -93,7 +93,7 @@ class TaskCommentComponent extends Component {
             getAllCommentInTask(this.props.currentTask.id).then(
               restComments => {
                 if(restComments && restComments.data.success === 1){
-                  this.setState({listComment : restComments.data.data, loadingComment : false, loadCommentErr: false }, () => {console.log(this.state.listComment)})
+                  this.setState({listComment : restComments.data.data, loadCommentErr :false ,loadingComment : false }, () => {console.log(this.state.listComment)})
                 }
               }
             ).catch(
@@ -119,7 +119,7 @@ class TaskCommentComponent extends Component {
             spinnerWidth={2}
             visible={true}
           />
-          <p className="text-center text-loading">Loading comments"</p>
+          <p className="text-center text-loading">Đang tải ...</p>
         </div>
       )
     }
@@ -161,7 +161,10 @@ class TaskCommentComponent extends Component {
                         this.setState({ newCommentContent: e.target.value }, () => console.log(this.state.newCommentContent))
                     }
                   />
-                  <Button className="add-comment" onClick = {this.addNewComment.bind(this)}>  
+                  <Button className="add-comment" 
+                     onClick = {this.addNewComment.bind(this)}
+                     disabled = {this.state.sendingComment === true ? true : false}
+                  >  
                     <i className= {this.state.sendingComment !== true ? "fa fa-paper-plane" : "d-none"}  aria-hidden="true"></i> 
                     <span className= {this.state.sendingComment === true ? "margin-left-10px" : "d-none"}>
                         <Spinner
