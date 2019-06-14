@@ -156,7 +156,7 @@ export class ListProject extends React.Component {
     return (
       <div className="full-width">
         <Row className="list-project">
-          <p className="title-slider-category">Project của bạn</p>
+          <p className="title-slider-category">Dự án của bạn</p>
           <div
             className={
               this.state.getlistProjectSuccess === false
@@ -172,7 +172,7 @@ export class ListProject extends React.Component {
               className="spinerCustom"
             />
             <p className="text-center text-loading">
-              Đang tải xuống các project của bạn
+              Đang tải xuống các dự án của bạn
             </p>
           </div>
           {this.renderListProjet()}
