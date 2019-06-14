@@ -44,6 +44,7 @@ export class ListProject extends React.Component {
   componentDidMount() {
     let userData = JSON.parse(localStorage.getItem("userData"));
     ProjectService.getUserProjects(userData.id).then(projects => {
+      console.log(projects);
       this.setState(
         {
           listProject: projects.data.data,
