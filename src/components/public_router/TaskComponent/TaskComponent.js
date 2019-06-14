@@ -7,6 +7,7 @@ import Spinner from "react-spinner-material";
 import EditTaskComponent from "./EditTaskComponent/EditTaskComponent";
 import AddTaskComponent from "./AddTaskComponent/AddTaskComponent";
 import moment from "moment";
+import TaskComentComponent from "./TaskComentComponent/AddTaskComponent";
 
 class TaskComponent extends Component {
   constructor(props) {
@@ -23,10 +24,9 @@ class TaskComponent extends Component {
       tasksNameAdded: "", // add của cột nào
       tasksNameEdited: "" // edit của cột nào
     };
-    this.openFormEditTaskFromParent = this.openFormEditTaskFromParent.bind(
-      this
-    );
+    this.openFormEditTaskFromParent = this.openFormEditTaskFromParent.bind(this);
     this.openFormAddTaskFromParent = this.openFormAddTaskFromParent.bind(this);
+    this.openTaskComentComponent = this.openTaskComentComponent.bind(this);
   }
 
   componentDidMount() {
@@ -73,6 +73,7 @@ class TaskComponent extends Component {
 
   openFormEditTaskFromParent() {}
   openFormAddTaskFromParent() {}
+  openTaskComentComponent(){}
 
   passTaskItemToEditTaskComponent(task) {
     this.setState({ taskEdit: task });
@@ -96,7 +97,7 @@ class TaskComponent extends Component {
 
   renderListTaskDetail(tasks) {
     let listRender = tasks.map((task, index) => (
-      <div className="task-cover" key={index}>
+      <div className="task-cover" key={index}  onClick = {this.openTaskComentComponent}>
         <div>
           <p className="task-name">
             {task.description}
@@ -111,16 +112,12 @@ class TaskComponent extends Component {
           </p>
           <p className="text-left">
             Ngày hết hạn:{" "}
-            <span className="due-date"> {this.formatTime(task.due_date)}</span>
+            <span className="task-due-date"> {this.formatTime(task.due_date)}</span>
           </p>
         </div>
       </div>
     ));
     return listRender;
-  }
-
-  getTaskFromChild1(task, methodName, curentStatus) {
-    this.getAllTask(); // lấy lại dữ liệu cho chắc ăn
   }
 
   deleteItemFormArrById(array, Id) {
@@ -369,6 +366,9 @@ class TaskComponent extends Component {
             openFormPropEvent={click =>
               (this.openFormAddTaskFromParent = click)
             }
+          />
+          <TaskComentComponent
+            openFormPropEvent={click => (this.openTaskComentComponent = click) }
           />
         </div>
       </div>

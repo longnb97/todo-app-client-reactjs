@@ -44,14 +44,12 @@ class AddTaskComponent extends Component {
   resetData(){
     this.setState({
       taskDescription: "",
-      ownerId: "",
-      taskDueDate: "",
       taskImg: "",
       errAddTask: false
     })
   }
 
-  createProject() {
+  createNewTask() {
     let newTask = {
       projectId: this.props.projetId,
       project_id: this.props.projetId,
@@ -65,7 +63,7 @@ class AddTaskComponent extends Component {
           ? this.state.taskImg
           : "https://www.google.com/imgres?imgurl=https%3A%2F%2Fkenh14cdn.com%2F2019%2F2%2F24%2F3561716420480213454575853861059020806684672n-15510057259571546306615.jpg&imgrefurl=http%3A%2F%2Fkenh14.vn%2Fbiet-viet-nam-co-ca-ro-girl-xinh-nhung-bau-moi-chinh-la-nguoi-duoc-goi-ten-nhieu-nhat-tren-cac-dien-dan-gai-dep-20190224180243643.chn&docid=2lYk3NVAra-HZM&tbnid=heZvU_4BzlXb4M%3A&vet=10ahUKEwiPopOAvuXiAhWQBKYKHZhQC_QQMwhNKAMwAw..i&w=1080&h=1350&safe=active&bih=657&biw=1366&q=image%20girl%20xinh&ved=0ahUKEwiPopOAvuXiAhWQBKYKHZhQC_QQMwhNKAMwAw&iact=mrc&uact=8"
     };
-
+    console.log(newTask);
     if (newTask.project_id === "" || newTask.description === "") {
       this.setState({
         withoutFieldVal : true
@@ -82,6 +80,11 @@ class AddTaskComponent extends Component {
               this.resetData();
               this.setState({ creatingTask: false }, () => this._openForm());
             }
+            else{
+              console.log(resCreateTask.data.message)
+              this.setState({ creatingTask: false, errAddTask: true });
+              ToastsStore.error("Có lỗi xảy ra, hãy thử lại !");
+            }
           })
           .catch(e => {
             this.setState({ creatingTask: false, errAddTask: true });
@@ -95,6 +98,7 @@ class AddTaskComponent extends Component {
   _openForm() {
     let isOpenFormAdd = this.state.isOpenFormAdd;
     this.setState({ isOpenFormAdd: !isOpenFormAdd });
+    this.resetData();
   }
 
   renderLoadingData(loading, size, text) {
@@ -140,6 +144,7 @@ class AddTaskComponent extends Component {
                 onChange={e =>
                   this.setState({ taskDescription: e.target.value })
                 }
+                value = {this.state.taskDescription}
                 type="text"
                 name="descriptionTask"
               />
@@ -198,7 +203,7 @@ class AddTaskComponent extends Component {
                 <p className={"text-danger " + (this.state.errAddTask === true ? "d-block" : "d-none")}>Có lỗi xảy ra, kiểm tra kết nối mạng và thử lại !</p>
                 <hr />
                 <button
-                  onClick={this.createProject.bind(this)}
+                  onClick={this.createNewTask.bind(this)}
                   className="btn-create"
                   disabled={
                     this.state.creatingTask === true ||

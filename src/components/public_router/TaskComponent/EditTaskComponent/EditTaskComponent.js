@@ -47,9 +47,18 @@ class EditTaskComponent extends Component {
     }
   }
 
+  resetData(){
+    this.setState({
+      newTaskName: "",
+      newTaskStatus: "",
+      newtaskDueDate: "",
+      editingTask: false,
+      editSuccess: ""
+    })
+  }
 
   openFormEditTask(){
-      this.setState({newTaskName : "", newTaskStatus : "", newtaskDueDate : ""})
+      this.resetData();
       let isOpenFormEdit = this.state.isOpenFormEdit;
       this.setState({isOpenFormEdit :  !isOpenFormEdit }, () =>{
         if (this.state.isOpenFormEdit === true){
@@ -62,6 +71,7 @@ class EditTaskComponent extends Component {
   sendTaskEditedToParent(task, methodName, currentStatus){
     this.props.childSendTaskEdit(task, methodName, currentStatus);
   }
+
 
   deleteTask(){
     this.setState({editingTask : true, editSuccess: ""});
@@ -115,6 +125,7 @@ class EditTaskComponent extends Component {
         console.log(resUpdateTask);
         if(resUpdateTask.data.success === 1){
           this.setState({taskEdit : taskEdit, editingTask : false , editSuccess: true});
+
           this.sendTaskEditedToParent(taskEdit, "edit", this.state.currentStatus);// send new task to update at taskComponent
           ToastsStore.success("Đã edit task thành công");
         }
@@ -191,13 +202,12 @@ class EditTaskComponent extends Component {
         />
         <div className="edit-task">
           <div className="menu-edit-task">
-            <button disabled = {this.state.editingTask === true ? "true": false} className= {"menu-item " + (this.state.editOption === 1 ? "menu-item-active" : "")} onClick={this.selectEditTask.bind(this, 1)} > Chỉnh sửa nhãn </button>
-            <button disabled = {this.state.editingTask === true ? "true": false} className= {"menu-item " + (this.state.editOption === 2 ? "menu-item-active" : "")}  onClick={this.selectEditTask.bind(this, 2)} > Thay đổi thành viên</button>
-            <button disabled = {this.state.editingTask === true ? "true": false} className= {"menu-item " + (this.state.editOption === 3 ? "menu-item-active" : "")} onClick={this.selectEditTask.bind(this, 3)} > Di chuyển </button>
-            <button disabled = {this.state.editingTask === true ? "true": false} className= {"menu-item " + (this.state.editOption === 4 ? "menu-item-active" : "")} onClick={this.selectEditTask.bind(this, 4)} > Thay đổi ngày hết hạn</button>
-            <button disabled = {this.state.editingTask === true ? "true": false} className= {"menu-item text-danger delete-button " + (this.state.editOption === 5 ? "menu-item-del-active" : "")} onClick={this.selectEditTask.bind(this, 5)}> Xóa Task</button>
-            {/* <button disabled = {this.state.editingTask === true ? "true": false} className="menu-item text-danger delete-button "  onClick={() => {this.openFormEditTask(); this.sendTaskEditedToParent(this.state.taskEdit,'edit', this.state.currentStatus) }}> Thoát</button> */}
-            <button disabled = {this.state.editingTask === true ? "true": false} className="menu-item text-danger delete-button "  onClick={this.openFormEditTask.bind(this)}> Thoát</button>
+            <button disabled = {this.state.editingTask === true ? true: false} className= {"menu-item " + (this.state.editOption === 1 ? "menu-item-active" : "")} onClick={this.selectEditTask.bind(this, 1)} > Chỉnh sửa nhãn </button>
+            <button disabled = {this.state.editingTask === true ? true: false} className= {"menu-item " + (this.state.editOption === 2 ? "menu-item-active" : "")}  onClick={this.selectEditTask.bind(this, 2)} > Thay đổi thành viên</button>
+            <button disabled = {this.state.editingTask === true ? true: false} className= {"menu-item " + (this.state.editOption === 3 ? "menu-item-active" : "")} onClick={this.selectEditTask.bind(this, 3)} > Di chuyển </button>
+            <button disabled = {this.state.editingTask === true ? true: false} className= {"menu-item " + (this.state.editOption === 4 ? "menu-item-active" : "")} onClick={this.selectEditTask.bind(this, 4)} > Thay đổi ngày hết hạn</button>
+            <button disabled = {this.state.editingTask === true ? true: false} className= {"menu-item text-danger delete-button " + (this.state.editOption === 5 ? "menu-item-del-active" : "")} onClick={this.selectEditTask.bind(this, 5)}> Xóa Task</button>
+            <button disabled = {this.state.editingTask === true ? true: false} className="menu-item text-danger delete-button "  onClick={this.openFormEditTask.bind(this)}> Thoát</button>
           </div>
           <div className="form-edit-task">
             <p className="title-form">{this.state.formTitle}</p>
@@ -207,6 +217,7 @@ class EditTaskComponent extends Component {
                   <h5 className="task-description"> {this.state.taskEdit.description} </h5> <hr/>
                   <h5>Nhập mô tả mới: </h5>
                   <input type="text" className="input-edit" name="newTaskName" 
+                    value = {this.state.newTaskName}
                     onChange={e =>
                         this.setState({ newTaskName: e.target.value })
                     }
@@ -227,7 +238,7 @@ class EditTaskComponent extends Component {
                   <hr/>
                   <p className={ this.state.editSuccess === true ? "text-primary" : "d-none" }>Đã thay đổi trạng thái thành công</p>
                   <p className={ this.state.editSuccess === false ? "text-danger" : "d-none" }>Thay đổi trạng thái không thành công</p>
-                  <button disabled = {this.state.editingTask === true ? true: false} className="accept-button" onClick={this.editTask.bind(this)} >
+                  <button disabled = {this.state.editingTask === true ? true: false } className="accept-button" onClick={this.editTask.bind(this)} >
                     {this.state.editingTask === true ? 'Đang lưu các thay đổi của bạn ...': 'Thay đổi'}
                   </button>
                 </div>
