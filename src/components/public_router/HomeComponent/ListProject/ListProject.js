@@ -2,7 +2,6 @@ import React from "react";
 
 import * as ProjectService from "../../../../service/project-service";
 import "./ListProject.css";
-
 import Slider from "react-slick";
 import { Row, Col, Button } from "react-bootstrap";
 import ReadMoreReact from "read-more-react";
