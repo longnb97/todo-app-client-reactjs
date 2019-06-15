@@ -222,6 +222,7 @@ class TaskCommentComponent extends Component {
                       : "d-none"
                   }
                 >
+                
                   {" "}
                   Không có comment nào cả!{" "}
                 </p>
