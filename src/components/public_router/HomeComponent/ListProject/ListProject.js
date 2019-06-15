@@ -43,7 +43,7 @@ export class ListProject extends React.Component {
   componentDidMount() {
     let userData = JSON.parse(localStorage.getItem("userData"));
     ProjectService.getUserProjects(userData.id).then(projects => {
-      console.log(projects);
+      if ( projects && projects.data.data && projects.data.data.length > 0)
       this.setState(
         {
           listProject: projects.data.data,
