@@ -112,7 +112,7 @@ class LoginComponent extends Component {
               ToastsStore.success("Đăng nhập thành công !");
               this.setState({ redirectToReferrer: true, isLoading: false }, () => {
                 this.props.history.push({
-                  pathname: "/dashboard"
+                  pathname: "/"
                 });
               });
             });

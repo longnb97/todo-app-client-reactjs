@@ -42,13 +42,15 @@ class HeaderComponent extends Component {
   }
 
   _dispatchReduxLogOut() {
-    const { history, authed } = this.props;
+    const { history } = this.props;
     ToastsStore.success("Logout thành công");
     this.props.dispatchReduxLogOut({ isLogin: false, role: null });
     localStorage.removeItem("token");
     localStorage.removeItem("typeUser");
     localStorage.removeItem("userData");
-    history.push("/login");
+    setTimeout( () =>{
+      history.push("/login");
+    } , 500)
   }
 
   getFirstCharacterProjectName(projectName) {
