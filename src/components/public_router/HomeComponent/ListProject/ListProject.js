@@ -56,6 +56,7 @@ export class ListProject extends React.Component {
     });
   }
 
+  
   _sliceText(text, max) {
     if (text == undefined) {
       return " ";
